@@ -1,0 +1,67 @@
+---
+// src/components/Footer.astro
+import { site, nav, footer } from "../data/content";
+import Logo from "../assets/logo.svg?raw";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand" set:html={Logo} />
+    <nav aria-label="Footer">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <p class="site-footer__contact">
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </p>
+    <p class="site-footer__copyright">{footer.copyright}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--navy-950);
+    color: var(--white);
+    padding-block: var(--space-12);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-footer__brand {
+    width: 130px;
+  }
+
+  .site-footer nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .site-footer a {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: var(--teal-400);
+  }
+
+  .site-footer__copyright {
+    width: 100%;
+    font-size: var(--text-sm);
+    opacity: 0.7;
+    margin: 0;
+  }
+</style>
