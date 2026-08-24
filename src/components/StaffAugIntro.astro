@@ -1,0 +1,65 @@
+---
+// src/components/StaffAugIntro.astro
+import { staffAugIntro } from "../data/content";
+---
+
+<section id={staffAugIntro.id} class="staff-aug-intro" aria-labelledby="staff-aug-heading">
+  <div class="container">
+    <p class="eyebrow">{staffAugIntro.eyebrow}</p>
+    <h2 id="staff-aug-heading">{staffAugIntro.headline}</h2>
+    <p class="staff-aug-intro__subhead">{staffAugIntro.subhead}</p>
+
+    <div class="staff-aug-intro__panels">
+      <div class="panel">
+        <h3>{staffAugIntro.whatIsHeading}</h3>
+        <p>{staffAugIntro.whatIsBody}</p>
+      </div>
+      <div class="panel panel--accent">
+        <h3>{staffAugIntro.differenceHeading}</h3>
+        <p>{staffAugIntro.differenceBody}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .staff-aug-intro {
+    padding-block: var(--space-16);
+    background: var(--lavender-50);
+  }
+
+  .staff-aug-intro h2 {
+    font-size: var(--text-xl);
+  }
+
+  .staff-aug-intro__subhead {
+    max-width: 60ch;
+    font-size: var(--text-lg);
+  }
+
+  .staff-aug-intro__panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .panel {
+    background: var(--white);
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+  }
+
+  .panel--accent {
+    background: var(--navy-950);
+    color: var(--white);
+    border-color: transparent;
+  }
+
+  @media (max-width: 780px) {
+    .staff-aug-intro__panels {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
