@@ -1,0 +1,40 @@
+---
+// src/components/Industries.astro
+import { industries } from "../data/content";
+---
+
+<section id={industries.id} class="industries" aria-labelledby="industries-heading">
+  <div class="container">
+    <h2 id="industries-heading">{industries.heading}</h2>
+    <ul class="industries__pills">
+      {industries.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .industries {
+    padding-block: var(--space-16);
+    background: var(--lavender-50);
+  }
+
+  .industries__pills {
+    list-style: none;
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .industries__pills li {
+    background: var(--white);
+    border: 1px solid var(--border-on-light);
+    border-radius: 999px;
+    padding: var(--space-2) var(--space-4);
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+</style>
