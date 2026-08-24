@@ -1,0 +1,75 @@
+---
+// src/components/WhyKalos.astro
+import { whyKalos } from "../data/content";
+---
+
+<section id="why-kalos" class="why-kalos" aria-labelledby="why-kalos-heading">
+  <div class="container">
+    <h2 id="why-kalos-heading">{whyKalos.heading}</h2>
+    <p class="why-kalos__intro">{whyKalos.intro}</p>
+    <ul class="why-kalos__bullets">
+      {whyKalos.bullets.map((bullet) => (
+        <li>{bullet}</li>
+      ))}
+    </ul>
+    <p class="why-kalos__closing">{whyKalos.closing}</p>
+
+    <div class="why-kalos__grid">
+      <div>
+        <h3>{whyKalos.whyKalosHeading}</h3>
+        <ol>
+          {whyKalos.whyKalosItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+      </div>
+      <blockquote class="why-kalos__quote">
+        <p>{whyKalos.quote}</p>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-kalos {
+    padding-block: var(--space-16);
+  }
+
+  .why-kalos__intro,
+  .why-kalos__closing {
+    max-width: 65ch;
+  }
+
+  .why-kalos__closing {
+    font-weight: 600;
+  }
+
+  .why-kalos__bullets {
+    padding-left: var(--space-6);
+  }
+
+  .why-kalos__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+    align-items: center;
+  }
+
+  .why-kalos__quote {
+    background: var(--navy-950);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @media (max-width: 780px) {
+    .why-kalos__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
