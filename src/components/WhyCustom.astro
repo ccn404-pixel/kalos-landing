@@ -1,0 +1,50 @@
+---
+// src/components/WhyCustom.astro
+import { whyCustom } from "../data/content";
+---
+
+<section id="why-custom" class="why-custom" aria-labelledby="why-custom-heading">
+  <div class="container">
+    <h2 id="why-custom-heading">{whyCustom.heading}</h2>
+    <ul class="why-custom__list">
+      {whyCustom.items.map((item) => (
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="20" height="20">
+            <path d="M4 10l4 4 8-9" stroke="var(--teal-400)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why-custom {
+    background: var(--navy-950);
+    color: var(--white);
+    padding-block: var(--space-16);
+    clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+  }
+
+  .why-custom h2 {
+    font-style: italic;
+    font-size: var(--text-xl);
+    max-width: 20ch;
+  }
+
+  .why-custom__list {
+    list-style: none;
+    margin: var(--space-8) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .why-custom__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+</style>
