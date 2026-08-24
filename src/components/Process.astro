@@ -1,0 +1,68 @@
+---
+// src/components/Process.astro
+import { process } from "../data/content";
+---
+
+<section id={process.id} class="process" aria-labelledby="process-heading">
+  <div class="container">
+    <h2 id="process-heading">{process.heading}</h2>
+    <p class="process__intro">{process.intro}</p>
+    <ol class="process__steps">
+      {process.steps.map((step) => (
+        <li>
+          <span class="process__number" aria-hidden="true">{step.number}</span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process {
+    padding-block: var(--space-16);
+  }
+
+  .process__intro {
+    max-width: 60ch;
+  }
+
+  .process__steps {
+    list-style: none;
+    margin: var(--space-8) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .process__steps li {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    border-left: 2px solid var(--border-on-light);
+    padding-left: var(--space-6);
+  }
+
+  .process__number {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--teal-400);
+    background: var(--navy-950);
+    border-radius: 999px;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .process__steps h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-1);
+  }
+</style>
