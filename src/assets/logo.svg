@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" role="img" aria-labelledby="kalosLogoTitle">
+  <title id="kalosLogoTitle">Kalos Technology</title>
+  <g fill="currentColor">
+    <path d="M20 4 L34 14 L20 20 L6 14 Z" />
+    <path d="M6 26 L20 20 L34 26 L20 36 Z" opacity="0.55" />
+    <circle cx="6" cy="30" r="3" />
+  </g>
+  <text x="46" y="22" font-family="-apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="16" font-weight="700" fill="currentColor">KALOS</text>
+  <text x="46" y="34" font-family="-apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="8" letter-spacing="2" fill="currentColor" opacity="0.75">TECHNOLOGY</text>
+</svg>
