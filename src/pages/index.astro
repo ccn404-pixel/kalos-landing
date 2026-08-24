@@ -1,11 +1,13 @@
 ---
 // src/pages/index.astro
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
 ---
 
 <BaseLayout
   title="Kalos Technology | Bespoke Software Development & Staff Augmentation"
   description="Kalos Technology designs custom software around your business and augments your engineering team with experienced developers who report to you."
 >
+  <Header slot="header" />
   <h1>Kalos Technology</h1>
 </BaseLayout>

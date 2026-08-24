@@ -1,0 +1,122 @@
+---
+// src/components/Header.astro
+import { site, nav, hero } from "../data/content";
+import Logo from "../assets/logo.svg?raw";
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="#main" class="site-header__logo" aria-label={`${site.name} home`} set:html={Logo} />
+
+    <button
+      type="button"
+      class="site-header__toggle"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="primary-nav"
+    >
+      <span class="visually-hidden">Toggle menu</span>
+      <span aria-hidden="true">☰</span>
+    </button>
+
+    <nav id="primary-nav" class="site-header__nav" data-nav-menu aria-label="Primary">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a href={hero.primaryCta.href} class="btn btn-primary site-header__cta">
+        {hero.primaryCta.label}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import { initNavToggle } from "../scripts/nav-toggle.js";
+  initNavToggle();
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy-950);
+    color: var(--white);
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-4);
+  }
+
+  .site-header__logo {
+    color: var(--white);
+    width: 140px;
+  }
+
+  .site-header__toggle {
+    background: transparent;
+    border: 1px solid var(--border-on-dark);
+    color: var(--white);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-lg);
+    display: none;
+  }
+
+  .site-header__nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .site-header__nav a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: var(--text-sm);
+  }
+
+  .site-header__nav a:hover {
+    color: var(--teal-400);
+  }
+
+  @media (max-width: 860px) {
+    .site-header__toggle {
+      display: inline-flex;
+    }
+
+    .site-header__nav {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      background: var(--navy-950);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--space-6);
+      display: none;
+      border-bottom: 1px solid var(--border-on-dark);
+    }
+
+    .site-header__nav[data-open] {
+      display: flex;
+    }
+
+    .site-header__nav ul {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+  }
+</style>
