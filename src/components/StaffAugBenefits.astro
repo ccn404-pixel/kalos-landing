@@ -1,0 +1,54 @@
+---
+// src/components/StaffAugBenefits.astro
+import { staffAugBenefits } from "../data/content";
+---
+
+<section id="staff-aug-benefits" class="staff-aug-benefits" aria-labelledby="staff-aug-benefits-heading">
+  <div class="container">
+    <h2 id="staff-aug-benefits-heading">{staffAugBenefits.heading}</h2>
+    <ul class="staff-aug-benefits__grid">
+      {staffAugBenefits.items.map((item) => (
+        <li class="card">
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="20" height="20">
+            <path d="M4 10l4 4 8-9" stroke="var(--teal-400)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .staff-aug-benefits {
+    padding-block: var(--space-16);
+  }
+
+  .staff-aug-benefits__grid {
+    list-style: none;
+    margin: var(--space-8) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .staff-aug-benefits__grid .card {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .staff-aug-benefits__grid h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-1);
+  }
+
+  .staff-aug-benefits__grid svg {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+</style>
