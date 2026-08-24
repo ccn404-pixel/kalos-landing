@@ -1,0 +1,66 @@
+---
+// src/components/Services.astro
+import { services } from "../data/content";
+---
+
+<section id={services.id} class="services" aria-labelledby="services-heading">
+  <div class="container">
+    <p class="eyebrow">{services.eyebrow}</p>
+    <h2 id="services-heading">{services.heading}</h2>
+    <p class="services__intro">{services.intro}</p>
+    <ul class="services__grid">
+      {services.items.map((item) => (
+        <li class="card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding-block: var(--space-16);
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--navy-800);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    opacity: 0.65;
+  }
+
+  .services__intro {
+    max-width: 60ch;
+  }
+
+  .services__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .card h3 {
+    font-size: var(--text-lg);
+  }
+</style>
