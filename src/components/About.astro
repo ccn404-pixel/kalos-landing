@@ -1,0 +1,38 @@
+---
+// src/components/About.astro
+import { about } from "../data/content";
+---
+
+<section id="about" class="about" aria-labelledby="about-heading">
+  <div class="container about__inner">
+    <h2 id="about-heading">{about.heading}</h2>
+    <div class="about__columns">
+      <p>{about.overview}</p>
+      <p>{about.reliability}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding-block: var(--space-16);
+    background: var(--lavender-50);
+  }
+
+  .about__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .about h2 {
+    font-size: var(--text-xl);
+    max-width: 20ch;
+  }
+
+  @media (max-width: 720px) {
+    .about__columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
