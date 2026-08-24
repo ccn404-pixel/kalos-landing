@@ -5,11 +5,11 @@ export const site = {
 };
 
 export const nav = [
-  { label: "Custom Software", href: "#custom-software" },
-  { label: "Staff Augmentation", href: "#staff-augmentation" },
-  { label: "Approach", href: "#approach" },
-  { label: "Industries", href: "#industries" },
-  { label: "Contact", href: "#contact" },
+  { label: "Custom Software", href: "/#custom-software" },
+  { label: "Staff Augmentation", href: "/#staff-augmentation" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Industries", href: "/#industries" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const hero = {
@@ -17,8 +17,8 @@ export const hero = {
   headline: "Software that fits. Teams that scale.",
   subhead:
     "We design and build custom software around your business goals, and put experienced engineers directly on your team — without the recruitment overhead. You stay in control. We handle the complexity.",
-  primaryCta: { label: "Start the conversation", href: "#contact" },
-  secondaryCta: { label: "See our approach", href: "#approach" },
+  primaryCta: { label: "Start the conversation", href: "/#contact" },
+  secondaryCta: { label: "See our approach", href: "/#approach" },
 };
 
 export const about = {

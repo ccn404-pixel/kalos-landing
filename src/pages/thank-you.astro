@@ -10,10 +10,17 @@ import Footer from "../components/Footer.astro";
   description="Thanks for reaching out to Kalos Technology — we'll be in touch soon."
 >
   <Header slot="header" />
-  <section class="container" style="padding-block: 6rem; text-align: center;">
-    <h1>Thank you for reaching out.</h1>
+  <section class="container thank-you" aria-labelledby="thank-you-heading">
+    <h1 id="thank-you-heading">Thank you for reaching out.</h1>
     <p>We've received your message and will get back to you shortly.</p>
     <a href="/" class="btn btn-primary">Back to home</a>
   </section>
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  .thank-you {
+    padding-block: 6rem;
+    text-align: center;
+  }
+</style>

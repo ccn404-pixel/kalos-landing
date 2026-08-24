@@ -6,7 +6,7 @@ import Logo from "../assets/logo.svg?raw";
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a href="#main" class="site-header__logo" aria-label={`${site.name} home`} set:html={Logo} />
+    <a href="/" class="site-header__logo" aria-label={`${site.name} home`} set:html={Logo} />
 
     <button
       type="button"
@@ -94,23 +94,34 @@ import Logo from "../assets/logo.svg?raw";
   }
 
   @media (max-width: 860px) {
-    .site-header__toggle {
+    /* The toggle button only does anything once nav-toggle.js has attached
+       its click handler, so it's only shown once the `.js` class is present.
+       Without JS, there is nothing to toggle: the nav below is always
+       visible in normal flow, so no button is needed. */
+    :global(.js) .site-header__toggle {
       display: inline-flex;
     }
 
     .site-header__nav {
-      position: absolute;
-      inset-inline: 0;
-      top: 100%;
       background: var(--navy-950);
       flex-direction: column;
       align-items: flex-start;
       padding: var(--space-6);
-      display: none;
       border-bottom: 1px solid var(--border-on-dark);
     }
 
-    .site-header__nav[data-open] {
+    /* No-JS fallback: nav stays in normal flow and is always reachable
+       below the header. Only once JS has run (documentElement gets the
+       `.js` class) do we collapse it into an absolutely-positioned panel
+       behind the toggle button. */
+    :global(.js) .site-header__nav {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      display: none;
+    }
+
+    :global(.js) .site-header__nav[data-open] {
       display: flex;
     }
 

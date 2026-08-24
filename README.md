@@ -31,6 +31,9 @@ Runs Node's built-in test runner over `tests/`. Most tests build the site and
 assert on the generated HTML (content presence, anchor integrity, accessibility
 markers); a few test pure JS logic (nav toggle, scroll reveal) directly.
 
+Requires Node.js >= 22.6.0 — `tests/content.test.mjs` imports `src/data/content.ts`
+directly and relies on Node's native TypeScript type-stripping support.
+
 ## Deploying to Netlify
 
 **Build command:** `npm run build`
