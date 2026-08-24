@@ -8,7 +8,7 @@ import { services } from "../data/content";
     <p class="eyebrow">{services.eyebrow}</p>
     <h2 id="services-heading">{services.heading}</h2>
     <p class="services__intro">{services.intro}</p>
-    <ul class="services__grid">
+    <ul class="services__grid" data-reveal>
       {services.items.map((item) => (
         <li class="card">
           <h3>{item.title}</h3>

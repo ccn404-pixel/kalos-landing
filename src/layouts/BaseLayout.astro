@@ -38,5 +38,9 @@ const canonicalURL = new URL(Astro.url.pathname, `https://${site.domain}`);
       <slot />
     </main>
     <slot name="footer" />
+    <script>
+      import { initScrollReveal } from "../scripts/scroll-reveal.js";
+      initScrollReveal();
+    </script>
   </body>
 </html>
