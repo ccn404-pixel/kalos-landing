@@ -1,0 +1,115 @@
+---
+// src/components/Contact.astro
+import { contact } from "../data/content";
+---
+
+<section id={contact.id} class="contact" aria-labelledby="contact-heading">
+  <div class="container contact__inner">
+    <div class="contact__copy">
+      <h2 id="contact-heading">{contact.heading}</h2>
+      <p>{contact.body}</p>
+      <h3>{contact.ctaHeading}</h3>
+      <p>
+        Website: <a href={`https://${contact.website}`}>{contact.website}</a><br />
+        Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+      </p>
+    </div>
+
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/thank-you"
+      class="contact__form"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="visually-hidden">
+        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="interest">What are you interested in?</label>
+        <select id="interest" name="interest">
+          {contact.interestOptions.map((option) => (
+            <option value={option}>{option}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Send message</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-block: var(--space-16);
+    background: var(--navy-950);
+    color: var(--white);
+  }
+
+  .contact__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+
+  .contact h2 {
+    font-size: var(--text-xl);
+  }
+
+  .contact a {
+    color: var(--teal-400);
+  }
+
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .field label {
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    background: var(--navy-900);
+    border: 1px solid var(--border-on-dark);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    padding: var(--space-3);
+    font-family: inherit;
+    font-size: var(--text-base);
+  }
+
+  @media (max-width: 780px) {
+    .contact__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

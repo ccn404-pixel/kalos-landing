@@ -1,0 +1,17 @@
+---
+// src/pages/thank-you.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+---
+
+<BaseLayout
+  title="Thank You | Kalos Technology"
+  description="Thanks for reaching out to Kalos Technology — we'll be in touch soon."
+>
+  <Header slot="header" />
+  <section class="container" style="padding-block: 6rem; text-align: center;">
+    <h1>Thank you for reaching out.</h1>
+    <p>We've received your message and will get back to you shortly.</p>
+    <a href="/" class="btn btn-primary">Back to home</a>
+  </section>
+</BaseLayout>
