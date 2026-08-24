@@ -1,0 +1,46 @@
+---
+// src/components/StaffAugServices.astro
+import { staffAugServices } from "../data/content";
+---
+
+<section id="staff-aug-services" class="staff-aug-services" aria-labelledby="staff-aug-services-heading">
+  <div class="container">
+    <h2 id="staff-aug-services-heading">{staffAugServices.heading}</h2>
+    <ul class="staff-aug-services__grid">
+      {staffAugServices.items.map((item) => (
+        <li class="card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .staff-aug-services {
+    padding-block: var(--space-16);
+    background: var(--lavender-50);
+  }
+
+  .staff-aug-services__grid {
+    list-style: none;
+    margin: var(--space-8) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card h3 {
+    font-size: var(--text-lg);
+  }
+</style>
