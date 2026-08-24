@@ -10,9 +10,16 @@ bespoke software development company. This replaces the informal Wix draft at
 `https://garojas0.wixstudio.com/kalos` with an independently hosted, high-quality
 implementation.
 
-**Authoritative content source:** `KALOS BROCHURE.ai` (9-page PDF-compatible
-Illustrator brochure, read via rendered page images). All factual claims — services,
-process, industries, differentiators, contact info — come from this document.
+**Authoritative content sources:**
+1. `KALOS BROCHURE.ai` (9-page PDF-compatible Illustrator brochure, read via
+   rendered page images) — covers company overview, the 5 custom-software services,
+   development process, industries, and general differentiators.
+2. Staff Augmentation content supplied directly by the user in chat (not present in
+   the 9-page brochure file — a separate/additional offering the user provided
+   verbatim) — covers the Staff Augmentation service line: definition, differentiation
+   from outsourcing, 7 benefits (including specific stats: 50% faster onboarding,
+   30-40% cost savings), and 4 sub-services. Treated as equally authoritative since
+   the user supplied it directly as factual company content.
 
 **Secondary reference (design/structure inspiration only, not fact source):** the
 existing Wix Studio draft. It self-identifies as "Kalos Corporation" and includes
@@ -79,6 +86,44 @@ value."
 - No unnecessary features or licensing limits
 - Full ownership and long-term flexibility
 
+### Staff Augmentation (second core pillar, user-supplied content)
+
+**Tagline:** "Custom teams. Built to scale."
+**Subhead:** "Access world-class engineering talent without the recruitment
+overhead. Your developers report to you. We handle the complexity."
+
+**What is Staff Augmentation?** Staff augmentation is specialized talent on your
+terms. We recruit, vet, manage payroll, and handle compliance for experienced
+developers who integrate directly into your team. They report to your leadership,
+work your processes, and contribute immediately.
+
+**Key Difference from Outsourcing:** Unlike traditional outsourcing where an
+external firm owns the work, augmented staff maintain YOUR full control. You direct
+priorities. You maintain quality standards. You lead the architecture. We simply
+eliminate the hiring complexity.
+
+**Why augmentation over traditional hiring?**
+- 50% Faster Onboarding — Experienced developers productive within 1-2 weeks (vs.
+  3-6 months traditional hiring)
+- 30-40% Cost Savings — No recruitment fees, benefits overhead, or onboarding waste
+- Zero HR Complexity — We manage recruitment, payroll, taxes, compliance, background
+  checks
+- Full Control — Your team directs work; augmented staff report to you
+- Flexible Scaling — Add/reduce capacity in weeks as project demands change
+- Global Talent Access — Pre-vetted developers across multiple time zones and
+  specializations
+- Cultural Integration — Pre-matched for technical fit and team alignment
+
+**Services Offered (Staff Augmentation):**
+- **Specialized Developer Augmentation** — Integrate experienced software engineers
+  directly into your team reporting to your leadership.
+- **Flexible Team Scaling** — Scale your development capacity based on project
+  demands — no long-term commitments, no overhead.
+- **Technical Expertise on Demand** — Fill critical skill gaps with specialists in
+  your required technologies — React, Node.js, Cloud Architecture, DevOps, and more.
+- **Hybrid Partnerships** — Combine custom development with augmented staff for
+  maximum velocity.
+
 **Our development approach** (5 steps):
 1. **Discovery & Strategy** — We understand your business, users, and objectives
 2. **Solution Design** — Architecture and UX aligned with real-world use
@@ -114,8 +159,11 @@ ready to help." / "Start the conversation today."
         Header.astro
         Hero.astro
         About.astro
-        Services.astro
-        WhyCustom.astro
+        Services.astro          # custom software: 5 service cards
+        WhyCustom.astro         # why custom vs. off-the-shelf
+        StaffAugIntro.astro     # what is staff aug + key difference from outsourcing
+        StaffAugBenefits.astro  # 7-point why-augmentation checklist w/ stats
+        StaffAugServices.astro  # 4 staff-aug services offered
         Process.astro
         Industries.astro
         WhyKalos.astro
@@ -155,32 +203,59 @@ ready to help." / "Start the conversation today."
 
 ## 4. Page Sections (order + purpose)
 
-1. **Header** — sticky, logo (SVG), nav links (Services, Approach, Industries,
-   Contact), primary CTA button ("Start the conversation" → `#contact`). Mobile:
-   hamburger menu, accessible (button with `aria-expanded`, focus trap not required
-   for a simple nav reveal but focus must remain manageable via Tab).
-2. **Hero** — H1 "Software that fits. Not the other way around.", supporting line
-   from the overview, two CTAs (primary → contact, secondary "See our approach" →
-   process section), original SVG network/circuit graphic on the right (desktop) /
-   below (mobile), replacing the brochure's stock photo.
+The page presents **two equal engagement-model pillars** — Custom Software
+Development and Staff Augmentation — both introduced in the hero, each with its own
+full section group.
+
+1. **Header** — sticky, logo (SVG), nav links (Custom Software, Staff Augmentation,
+   Approach, Industries, Contact), primary CTA button ("Start the conversation" →
+   `#contact`). Mobile: hamburger menu, accessible (button with `aria-expanded`,
+   focus trap not required for a simple nav reveal but focus must remain manageable
+   via Tab).
+2. **Hero** — H1 combining both brochure-sourced taglines: "Software that fits.
+   Teams that scale." Subhead introduces both offerings (custom software built
+   around your business; augmented engineering talent that reports to you). Two
+   CTAs (primary → contact, secondary "See our approach" → process section),
+   original SVG network/circuit graphic, replacing the brochure's stock photo.
 3. **About** — overview paragraph + "A partner you can rely on" paragraph, two-column
-   layout on desktop.
-4. **Services** — "Our bespoke software services" as 5 cards, each with a short
-   original SVG icon (line-style, matching brand geometry), title, description.
-5. **Why Custom** — dark panel, italic-styled heading matching brochure's "Why custom
-   instead of off-the-shelf?" treatment, 4-item checklist.
-6. **Process** — "Our development approach," 5-step numbered list, timeline-style
-   layout (vertical on mobile, connected steps on desktop).
-7. **Industries** — pill/tag row of the 6 industries, simple and scannable.
-8. **Why Kalos** — "Built by Experts. Trusted by Businesses." intro + reliability
-   bullets, "Why Kalos?" 4-point list, pull quote "You're never just a client.
-   You're a partner." as a distinct visual callout.
-9. **Contact** — "Let's build your custom solution." heading + CTA copy, Netlify
-   form (Name, Email, Message — required fields, accessible labels, inline
-   validation via native HTML5 `required`/`type="email"`), plus direct `mailto:` link
-   and `kalostechnology.com` reference as fallback contact methods.
-10. **Footer** — logo, nav repeat, email (`mailto:`), copyright line, no fabricated
-    social links (brochure/site don't establish verified social profiles).
+   layout on desktop. Establishes Kalos generally before splitting into the two
+   pillars below.
+4. **Services** ("Custom Software Development" pillar, part 1) — "Our bespoke
+   software services" as 5 cards, each with a short original SVG icon (line-style,
+   matching brand geometry), title, description.
+5. **Why Custom** (pillar 1, part 2) — dark panel, italic-styled heading matching
+   brochure's "Why custom instead of off-the-shelf?" treatment, 4-item checklist.
+6. **Staff Aug Intro** ("Staff Augmentation" pillar, part 1) — section-opening
+   heading "Custom teams. Built to scale." + subhead, "What is Staff Augmentation?"
+   explainer, "Key Difference from Outsourcing" as a distinct callout box (echoes
+   the visual weight of the "Why custom" panel from pillar 1, keeping the two
+   pillars visually parallel).
+7. **Staff Aug Benefits** (pillar 2, part 2) — "Why augmentation over traditional
+   hiring?" 7-item checklist, each with its stat/claim called out (50% faster
+   onboarding, 30-40% cost savings, etc.) in a scannable card or list-with-icon
+   format matching the brand's checkmark styling.
+8. **Staff Aug Services** (pillar 2, part 3) — 4 services offered (Specialized
+   Developer Augmentation, Flexible Team Scaling, Technical Expertise on Demand,
+   Hybrid Partnerships) as cards, visually consistent with the Services section
+   (§4) so the two pillars read as siblings.
+9. **Process** — "Our development approach," 5-step numbered list, timeline-style
+   layout (vertical on mobile, connected steps on desktop). Framed as applying to
+   Kalos engagements generally (both custom builds and augmented-team work follow
+   this collaborative approach).
+10. **Industries** — pill/tag row of the 6 industries, simple and scannable.
+11. **Why Kalos** — "Built by Experts. Trusted by Businesses." intro + reliability
+    bullets, "Why Kalos?" 4-point list, pull quote "You're never just a client.
+    You're a partner." as a distinct visual callout.
+12. **Contact** — "Let's build your custom solution." heading + CTA copy, Netlify
+    form (Name, Email, Message — required fields, accessible labels, inline
+    validation via native HTML5 `required`/`type="email"`), plus direct `mailto:`
+    link and `kalostechnology.com` reference as fallback contact methods. Form
+    includes an optional "What are you interested in?" select (Custom Software /
+    Staff Augmentation / Not sure yet) to route inbound interest — purely a UX
+    routing aid, not a claim about backend processing.
+13. **Footer** — logo, nav repeat (including both pillars), email (`mailto:`),
+    copyright line, no fabricated social links (brochure/site don't establish
+    verified social profiles).
 
 ## 5. Visual Design System
 
@@ -253,8 +328,11 @@ ready to help." / "Start the conversation today."
 
 ## 9. Explicitly Out of Scope / Not Fabricated
 
-- No testimonials, client logos, case studies, certifications, awards, team bios, or
-  statistics — none appear in the brochure or are verifiable from the existing site.
+- No testimonials, client logos, case studies, certifications, awards, or team bios —
+  none appear in either brochure or the user-supplied Staff Augmentation content.
+  The Staff Augmentation stats (50% faster onboarding, 30-40% cost savings) ARE
+  included as they were supplied directly by the user as factual company content —
+  not independently verified by Claude, but not fabricated either.
 - No social media links — none are established in either source.
 - No street address — none given in either source; only website + email contact are
   provided.
