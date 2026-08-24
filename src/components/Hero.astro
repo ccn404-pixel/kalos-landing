@@ -1,0 +1,89 @@
+---
+// src/components/Hero.astro
+import { hero } from "../data/content";
+---
+
+<section id="hero" class="hero" aria-labelledby="hero-heading">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">{hero.eyebrow}</p>
+      <h1 id="hero-heading">{hero.headline}</h1>
+      <p class="hero__subhead">{hero.subhead}</p>
+      <div class="hero__actions">
+        <a href={hero.primaryCta.href} class="btn btn-primary">{hero.primaryCta.label}</a>
+        <a href={hero.secondaryCta.href} class="btn btn-secondary">{hero.secondaryCta.label}</a>
+      </div>
+    </div>
+    <div class="hero__graphic" aria-hidden="true">
+      <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="160" cy="160" r="150" stroke="var(--teal-400)" stroke-opacity="0.3" />
+        <circle cx="160" cy="160" r="100" stroke="var(--teal-400)" stroke-opacity="0.5" />
+        <g stroke="var(--teal-400)" stroke-width="1.5">
+          <line x1="40" y1="260" x2="120" y2="180" />
+          <line x1="120" y1="180" x2="200" y2="200" />
+          <line x1="200" y1="200" x2="280" y2="120" />
+          <line x1="120" y1="180" x2="140" y2="90" />
+        </g>
+        <g fill="var(--teal-400)">
+          <circle cx="40" cy="260" r="6" />
+          <circle cx="120" cy="180" r="6" />
+          <circle cx="200" cy="200" r="6" />
+          <circle cx="280" cy="120" r="6" />
+          <circle cx="140" cy="90" r="6" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: var(--navy-950);
+    color: var(--white);
+    padding-block: var(--space-24) var(--space-16);
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .hero__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal-400);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+
+  .hero h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .hero__subhead {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 46ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 860px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__graphic {
+      order: -1;
+      max-width: 240px;
+      margin-inline: auto;
+    }
+  }
+</style>
