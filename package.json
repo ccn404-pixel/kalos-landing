@@ -13,6 +13,14 @@
     "test": "node --test --test-concurrency=1 'tests/**/*.test.mjs'"
   },
   "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
     "astro": "^4.15.0"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "motion": "^13.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   }
 }
