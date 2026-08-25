@@ -1,10 +1,12 @@
 ---
 // src/components/WhyKalos.astro
+import { Image } from "astro:assets";
 import { whyKalos } from "../data/content";
+import teamPhoto from "../assets/photos/team-collaboration.png";
 ---
 
 <section id="why-kalos" class="why-kalos" aria-labelledby="why-kalos-heading">
-  <div class="container">
+  <div class="container" data-reveal>
     <h2 id="why-kalos-heading">{whyKalos.heading}</h2>
     <p class="why-kalos__intro">{whyKalos.intro}</p>
     <ul class="why-kalos__bullets">
@@ -13,8 +15,12 @@ import { whyKalos } from "../data/content";
       ))}
     </ul>
     <p class="why-kalos__closing">{whyKalos.closing}</p>
+  </div>
 
-    <div class="why-kalos__grid" data-reveal>
+  <div class="why-kalos__proof">
+    <Image src={teamPhoto} alt="" width={1600} height={3900} class="why-kalos__photo" />
+    <div class="why-kalos__scrim" aria-hidden="true"></div>
+    <div class="why-kalos__quote-wrap" data-reveal>
       <div>
         <h3>{whyKalos.whyKalosHeading}</h3>
         <ol>
@@ -32,7 +38,7 @@ import { whyKalos } from "../data/content";
 
 <style>
   .why-kalos {
-    padding-block: var(--space-16);
+    padding-block: var(--space-16) 0;
   }
 
   .why-kalos__intro,
@@ -48,53 +54,64 @@ import { whyKalos } from "../data/content";
     padding-left: var(--space-6);
   }
 
-  .why-kalos__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    margin-top: var(--space-8);
+  .why-kalos__proof {
+    position: relative;
+    min-height: 60vh;
+    margin-top: var(--space-16);
+    overflow: hidden;
+    color: var(--white);
+    display: flex;
     align-items: center;
   }
 
-  .why-kalos__quote {
+  .why-kalos__proof :global(.why-kalos__photo) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 0;
+  }
+
+  .why-kalos__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 14, 31, 0.9) 30%,
+      rgba(10, 14, 31, 0.35) 80%
+    );
+    z-index: 1;
+  }
+
+  .why-kalos__quote-wrap {
     position: relative;
-    background: var(--navy-950);
-    color: var(--white);
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    padding: var(--space-16) var(--space-6);
+    max-width: var(--max-width);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .why-kalos__quote {
+    background: rgba(10, 14, 31, 0.55);
+    border: 1px solid var(--border-on-dark);
     border-radius: var(--radius-lg);
     padding: var(--space-8);
     margin: 0;
-    font-family: var(--font-display);
     font-size: var(--text-xl);
     font-weight: 700;
     font-style: italic;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .why-kalos__quote:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
-  }
-
-  .why-kalos__quote::before {
-    content: "\201C";
-    position: absolute;
-    top: -0.4em;
-    left: var(--space-4);
-    font-size: 6rem;
-    font-family: var(--font-display);
-    color: var(--teal-400);
-    opacity: 0.25;
-    line-height: 1;
-  }
-
-  .why-kalos__quote p {
-    position: relative;
-    margin: 0;
+    backdrop-filter: blur(4px);
   }
 
   @media (max-width: 780px) {
-    .why-kalos__grid {
+    .why-kalos__quote-wrap {
       grid-template-columns: 1fr;
     }
   }
