@@ -13,4 +13,5 @@ test("services section renders id anchor and all 5 service cards", () => {
   assert.match(html, /Web (?:&#38;|&amp;|&) ?cloud applications/);
   assert.match(html, /System integrations (?:&#38;|&amp;|&) ?automation/);
   assert.match(html, /Modernization (?:&#38;|&amp;|&) ?optimization/);
+  assert.match(html, /pair-coworking/);
 });

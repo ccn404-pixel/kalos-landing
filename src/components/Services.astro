@@ -1,6 +1,8 @@
 ---
 // src/components/Services.astro
 import { services } from "../data/content";
+import { ServiceBento } from "../react/services/ServiceBento";
+import pairCoworking from "../assets/photos/pair-coworking.png";
 ---
 
 <section id={services.id} class="services" aria-labelledby="services-heading">
@@ -8,14 +10,7 @@ import { services } from "../data/content";
     <p class="eyebrow">{services.eyebrow}</p>
     <h2 id="services-heading">{services.heading}</h2>
     <p class="services__intro">{services.intro}</p>
-    <ul class="services__grid" data-reveal-group>
-      {services.items.map((item) => (
-        <li class="card" data-reveal="left">
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </li>
-      ))}
-    </ul>
+    <ServiceBento client:visible items={services.items} photoSrc={pairCoworking.src} />
   </div>
 </section>
 
@@ -35,18 +30,5 @@ import { services } from "../data/content";
 
   .services__intro {
     max-width: 60ch;
-  }
-
-  .services__grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--space-6);
-  }
-
-  .card h3 {
-    font-size: var(--text-lg);
   }
 </style>
