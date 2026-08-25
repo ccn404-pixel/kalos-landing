@@ -6,9 +6,9 @@ import { staffAugBenefits } from "../data/content";
 <section id="staff-aug-benefits" class="staff-aug-benefits" aria-labelledby="staff-aug-benefits-heading">
   <div class="container">
     <h2 id="staff-aug-benefits-heading">{staffAugBenefits.heading}</h2>
-    <ul class="staff-aug-benefits__grid" data-reveal-group>
+    <ul class="staff-aug-benefits__strip">
       {staffAugBenefits.items.map((item) => (
-        <li class="card" data-reveal="right">
+        <li class="card">
           <svg class="check-icon" aria-hidden="true" viewBox="0 0 20 20" width="20" height="20">
             <path d="M4 10l4 4 8-9" stroke="var(--teal-400)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
@@ -27,27 +27,31 @@ import { staffAugBenefits } from "../data/content";
     padding-block: var(--space-16);
   }
 
-  .staff-aug-benefits__grid {
+  .staff-aug-benefits__strip {
     list-style: none;
     margin: var(--space-8) 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    padding: 0 0 var(--space-4);
+    display: flex;
     gap: var(--space-6);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
   }
 
-  .staff-aug-benefits__grid .card {
+  .staff-aug-benefits__strip .card {
+    scroll-snap-align: start;
+    flex: 0 0 280px;
     display: flex;
     gap: var(--space-3);
     align-items: flex-start;
   }
 
-  .staff-aug-benefits__grid h3 {
+  .staff-aug-benefits__strip h3 {
     font-size: var(--text-base);
     margin-bottom: var(--space-1);
   }
 
-  .staff-aug-benefits__grid svg {
+  .staff-aug-benefits__strip svg {
     flex-shrink: 0;
     margin-top: 4px;
   }
