@@ -15,7 +15,7 @@ function StackItem({ step, index, total }: { step: ProcessStep; index: number; t
     target: ref,
     offset: ["start end", "start start"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
 
   return (
