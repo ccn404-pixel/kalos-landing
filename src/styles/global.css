@@ -274,3 +274,49 @@ svg {
     grid-column: span 1;
   }
 }
+
+.process-stack {
+  position: relative;
+  margin-top: var(--space-8);
+}
+
+.process-stack__item {
+  position: sticky;
+  margin-bottom: var(--space-6);
+}
+
+.process-stack__card {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border-on-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+.process-stack__number {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--teal-400);
+  background: var(--navy-950);
+  border-radius: 999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.process-stack__card h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-stack__item {
+    position: static;
+  }
+}
