@@ -37,7 +37,9 @@ body {
 h1,
 h2,
 h3 {
-  line-height: 1.15;
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   margin: 0 0 var(--space-4);
 }
 
@@ -98,23 +100,25 @@ svg {
 }
 
 .btn-primary {
-  background: var(--teal-400);
+  background: var(--gradient-teal);
   color: var(--navy-950);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-glow);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--white);
   border-color: var(--border-on-dark);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .btn-secondary:hover {
   border-color: var(--teal-400);
+  transform: translateY(-2px);
 }
 
 .card {
@@ -123,12 +127,13 @@ svg {
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-card);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow);
+  border-color: rgba(31, 230, 230, 0.5);
 }
 
 .visually-hidden {
@@ -145,8 +150,17 @@ svg {
 
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.js [data-reveal="left"] {
+  transform: translateX(-32px);
+}
+
+.js [data-reveal="right"] {
+  transform: translateX(32px);
 }
 
 .js [data-reveal].is-visible {
@@ -159,5 +173,41 @@ svg {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Staggered auto-delay for card grids: nth-child fallback when no
+   explicit --reveal-delay is set on the element. */
+[data-reveal-group] > *:nth-child(1) { --reveal-delay: 0s; }
+[data-reveal-group] > *:nth-child(2) { --reveal-delay: 0.08s; }
+[data-reveal-group] > *:nth-child(3) { --reveal-delay: 0.16s; }
+[data-reveal-group] > *:nth-child(4) { --reveal-delay: 0.24s; }
+[data-reveal-group] > *:nth-child(5) { --reveal-delay: 0.32s; }
+[data-reveal-group] > *:nth-child(6) { --reveal-delay: 0.4s; }
+[data-reveal-group] > *:nth-child(n+7) { --reveal-delay: 0.48s; }
+
+@keyframes shimmer {
+  from { background-position: -150% 0; }
+  to { background-position: 150% 0; }
+}
+
+.check-icon path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+
+.js [data-reveal].is-visible .check-icon path {
+  animation: draw-check 0.4s ease forwards 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .check-icon path {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
   }
 }

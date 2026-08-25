@@ -6,9 +6,9 @@ import { staffAugServices } from "../data/content";
 <section id="staff-aug-services" class="staff-aug-services" aria-labelledby="staff-aug-services-heading">
   <div class="container">
     <h2 id="staff-aug-services-heading">{staffAugServices.heading}</h2>
-    <ul class="staff-aug-services__grid">
+    <ul class="staff-aug-services__grid" data-reveal-group>
       {staffAugServices.items.map((item) => (
-        <li class="card">
+        <li class="card" data-reveal="right">
           <h3>{item.title}</h3>
           <p>{item.description}</p>
         </li>

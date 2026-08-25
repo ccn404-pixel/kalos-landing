@@ -9,12 +9,12 @@ import { staffAugIntro } from "../data/content";
     <h2 id="staff-aug-heading">{staffAugIntro.headline}</h2>
     <p class="staff-aug-intro__subhead">{staffAugIntro.subhead}</p>
 
-    <div class="staff-aug-intro__panels" data-reveal>
-      <div class="panel">
+    <div class="staff-aug-intro__panels">
+      <div class="panel" data-reveal="left">
         <h3>{staffAugIntro.whatIsHeading}</h3>
         <p>{staffAugIntro.whatIsBody}</p>
       </div>
-      <div class="panel panel--accent">
+      <div class="panel panel--accent" data-reveal="right" style={{ "--reveal-delay": "0.12s" }}>
         <h3>{staffAugIntro.differenceHeading}</h3>
         <p>{staffAugIntro.differenceBody}</p>
       </div>
@@ -49,12 +49,23 @@ import { staffAugIntro } from "../data/content";
     border: 1px solid var(--border-on-light);
     border-radius: var(--radius-lg);
     padding: var(--space-8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .panel:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(31, 230, 230, 0.4);
   }
 
   .panel--accent {
     background: var(--navy-950);
     color: var(--white);
     border-color: transparent;
+  }
+
+  .panel--accent:hover {
+    box-shadow: var(--shadow-glow);
   }
 
   @media (max-width: 780px) {

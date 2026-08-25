@@ -4,8 +4,9 @@ import { contact } from "../data/content";
 ---
 
 <section id={contact.id} class="contact" aria-labelledby="contact-heading">
+  <div class="contact__mesh" aria-hidden="true"></div>
   <div class="container contact__inner">
-    <div class="contact__copy">
+    <div class="contact__copy" data-reveal="left">
       <h2 id="contact-heading">{contact.heading}</h2>
       <p>{contact.body}</p>
       <h3>{contact.ctaHeading}</h3>
@@ -23,6 +24,8 @@ import { contact } from "../data/content";
       action="/thank-you"
       class="contact__form"
       aria-labelledby="contact-heading"
+      data-reveal="right"
+      style={{ "--reveal-delay": "0.12s" }}
     >
       <input type="hidden" name="form-name" value="contact" />
       <p class="visually-hidden" aria-hidden="true">
@@ -61,12 +64,23 @@ import { contact } from "../data/content";
 
 <style>
   .contact {
+    position: relative;
     padding-block: var(--space-16);
     background: var(--navy-950);
     color: var(--white);
+    overflow: hidden;
+  }
+
+  .contact__mesh {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-mesh);
+    opacity: 0.6;
+    pointer-events: none;
   }
 
   .contact__inner {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);

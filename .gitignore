@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 src/env.d.ts
+
+# Local Netlify folder
+.netlify
