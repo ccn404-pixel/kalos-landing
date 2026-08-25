@@ -29,7 +29,6 @@
 - Modify: `astro.config.mjs`
 - Create: `src/react/shared/reduced-motion.ts`
 - Create: `src/react/shared/RevealOnScroll.tsx`
-- Modify: `src/styles/global.css` (add `.reveal-island` base styles, mirrors existing `[data-reveal]` behavior for React-rendered content)
 - Test: `tests/react-islands.test.mjs`
 
 **Interfaces:**
@@ -1082,7 +1081,7 @@ git commit -m "Wire up Astryx + StyleX build pipeline"
 - Modify: `tests/services.test.mjs`
 
 **Interfaces:**
-- Consumes: `RevealOnScroll`, `useReducedMotion` (Task 1); `Astryx` primitives if Task 6 succeeded, otherwise plain divs + CSS classes if the fallback was taken (write whichever variant matches Task 6's actual outcome).
+- Consumes: `RevealOnScroll`, `useReducedMotion` (Task 1). Does not consume Astryx or `stylex.tokens.ts` regardless of Task 6's outcome (see Step 3).
 - Consumes: `src/assets/photos/pair-coworking.png`.
 - Produces: `ServiceBento({ items, photoSrc }: { items: Array<{ title: string; description: string }>; photoSrc: string })`.
 
@@ -1102,7 +1101,9 @@ npm test -- tests/services.test.mjs
 
 Expected: FAIL.
 
-- [ ] **Step 3: Write the bento component (plain-React variant — use this unless Task 6 confirmed Astryx works, in which case swap the wrapping `<div>`/`<article>` elements for the equivalent `@astryxdesign/core` `Card`/`Grid` components with the same className hooks)**
+- [ ] **Step 3: Write the bento component**
+
+Use this plain-React + CSS implementation regardless of Task 6's outcome. No concrete Astryx `Card`/`Grid` usage is specified anywhere in this plan, so improvising one here would violate the no-placeholders rule; `@astryxdesign/core` staying installed (Task 6 success path) is independent of what this component actually renders with.
 
 Create `src/react/services/ServiceBento.tsx`:
 
