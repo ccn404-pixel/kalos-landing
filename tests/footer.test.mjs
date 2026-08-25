@@ -16,4 +16,5 @@ test("footer renders nav, email, and copyright on both index and thank-you pages
     : "dist/thank-you.html";
   const thankYouHtml = fs.readFileSync(thankYouPath, "utf-8");
   assert.match(thankYouHtml, /aria-label="Footer"/);
+  assert.match(indexHtml, /logo-icon|logo-lockup/);
 });

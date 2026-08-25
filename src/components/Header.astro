@@ -1,12 +1,15 @@
 ---
 // src/components/Header.astro
+import { Image } from "astro:assets";
 import { site, nav, hero } from "../data/content";
-import Logo from "../assets/logo.svg?raw";
+import logoLockup from "../assets/logo-lockup.png";
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a href="/" class="site-header__logo" aria-label={`${site.name} home`} set:html={Logo} />
+    <a href="/" class="site-header__logo" aria-label={`${site.name} home`}>
+      <Image src={logoLockup} alt="" width={140} height={50} />
+    </a>
 
     <button
       type="button"
@@ -55,8 +58,9 @@ import Logo from "../assets/logo.svg?raw";
   }
 
   .site-header__logo {
-    color: var(--white);
     width: 140px;
+    height: auto;
+    display: block;
   }
 
   .site-header__toggle {

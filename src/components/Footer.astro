@@ -1,20 +1,15 @@
 ---
 // src/components/Footer.astro
+import { Image } from "astro:assets";
 import { site, nav, footer } from "../data/content";
-import LogoRaw from "../assets/logo.svg?raw";
-
-// The footer's copy of the logo is aria-hidden (nav + email text already
-// provide context here), but the raw SVG markup still gets injected into
-// the DOM, and its `id="kalosLogoTitle"` would otherwise collide with the
-// Header's copy on the same page — invalid HTML even once hidden from the
-// accessibility tree. Give this instance a distinct id without touching
-// src/assets/logo.svg itself.
-const Logo = LogoRaw.replaceAll("kalosLogoTitle", "kalosLogoTitleFooter");
+import logoLockup from "../assets/logo-lockup.png";
 ---
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
-    <div class="site-footer__brand" aria-hidden="true" set:html={Logo} />
+    <div class="site-footer__brand" aria-hidden="true">
+      <Image src={logoLockup} alt="" width={130} height={47} />
+    </div>
     <nav aria-label="Footer">
       <ul>
         {nav.map((item) => (
@@ -46,6 +41,8 @@ const Logo = LogoRaw.replaceAll("kalosLogoTitle", "kalosLogoTitleFooter");
 
   .site-footer__brand {
     width: 130px;
+    height: auto;
+    display: block;
   }
 
   .site-footer nav ul {
