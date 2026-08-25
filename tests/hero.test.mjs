@@ -11,4 +11,5 @@ test("hero renders headline as the only h1, subhead, and both CTAs", () => {
   assert.equal(h1Matches.length, 1, "page should have exactly one h1");
   assert.match(html, /Software that fits\. Teams that scale\./);
   assert.match(html, /See our approach/);
+  assert.match(html, /class="hero-island"/);
 });

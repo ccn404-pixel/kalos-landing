@@ -211,3 +211,22 @@ svg {
     stroke-dashoffset: 0;
   }
 }
+
+.hero-chip {
+  background: rgba(10, 14, 31, 0.6);
+  border: 1px solid var(--border-on-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--teal-300);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .hero-chip {
+    display: none;
+  }
+}
