@@ -64,6 +64,17 @@ The form posts to `/thank-you`, a static confirmation page
 All page copy lives in `src/data/content.ts` — edit it directly to change any
 text on the page; no other file needs to change for a copy-only update.
 
+## React islands
+
+The Hero, Custom Software (bento grid), and Approach (sticky-stack) sections
+are React islands hydrated client-side (`client:load` on the Hero since it's
+above the fold, `client:visible` elsewhere). Every island's real text content
+is still server-rendered by Astro — only the Motion/react-three-fiber
+animation layer depends on JavaScript. When adding a new island, put it under
+`src/react/<section>/` and reuse `src/react/shared/RevealOnScroll.tsx` and
+`useReducedMotion` from `src/react/shared/reduced-motion.ts` rather than
+writing new scroll-reveal or reduced-motion logic per component.
+
 ## Replacing Placeholder Assets
 
 - **OG image:** no `og-image.png` is included (spec explicitly avoids

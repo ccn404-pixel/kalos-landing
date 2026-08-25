@@ -1,8 +1,21 @@
 ---
 // src/components/Services.astro
+import { getImage } from "astro:assets";
 import { services } from "../data/content";
 import { ServiceBento } from "../react/services/ServiceBento";
 import pairCoworking from "../assets/photos/pair-coworking.png";
+
+// ServiceBento is a React island and needs a plain string src (not an
+// astro:assets <Image> component), so we pre-optimize with getImage() at
+// build time and pass the resulting URL through — this keeps the tile's
+// weight in line with every other photo on the page instead of shipping
+// the raw ~16MB source PNG straight to the browser.
+const optimizedPairCoworking = await getImage({
+  src: pairCoworking,
+  width: 800,
+  height: 1400,
+  format: "webp",
+});
 ---
 
 <section id={services.id} class="services" aria-labelledby="services-heading">
@@ -10,7 +23,7 @@ import pairCoworking from "../assets/photos/pair-coworking.png";
     <p class="eyebrow">{services.eyebrow}</p>
     <h2 id="services-heading">{services.heading}</h2>
     <p class="services__intro">{services.intro}</p>
-    <ServiceBento client:visible items={services.items} photoSrc={pairCoworking.src} />
+    <ServiceBento client:visible items={services.items} photoSrc={optimizedPairCoworking.src} />
   </div>
 </section>
 
