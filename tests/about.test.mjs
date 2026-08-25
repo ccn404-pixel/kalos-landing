@@ -10,4 +10,5 @@ test("about section renders overview and reliability copy", () => {
   assert.match(html, /A partner you can rely on/);
   assert.match(html, /not generic templates/);
   assert.match(html, /minimizes risk, accelerates decision-making/);
+  assert.match(html, /portrait-woman/);
 });
