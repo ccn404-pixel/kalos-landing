@@ -188,6 +188,12 @@ export const process = {
       description: "Ongoing support as your product grows",
     },
   ],
+  methodology: [
+    "Digital Transformation Strategies",
+    "Lean Six Sigma Optimization",
+    "Systematic Problem-Solving",
+    "Cloud Computing Strategy",
+  ],
 };
 
 export const industries = {

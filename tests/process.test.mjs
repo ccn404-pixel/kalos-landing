@@ -21,4 +21,9 @@ test("process section renders id anchor and all 5 steps in order", () => {
     assert.ok(idx > lastIndex, `${title} should appear after the previous step`);
     lastIndex = idx;
   }
+
+  assert.match(html, /Digital Transformation Strategies/);
+  assert.match(html, /Lean Six Sigma Optimization/);
+  assert.match(html, /Systematic Problem-Solving/);
+  assert.match(html, /Cloud Computing Strategy/);
 });

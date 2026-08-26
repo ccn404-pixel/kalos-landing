@@ -21,6 +21,7 @@ test("content module exports all required sections with correct shapes", async (
   assert.equal(c.staffAugServices.items.length, 4);
 
   assert.equal(c.process.steps.length, 5);
+  assert.equal(c.process.methodology.length, 4);
   assert.equal(c.industries.items.length, 6);
 
   assert.equal(c.whyKalos.bullets.length, 4);

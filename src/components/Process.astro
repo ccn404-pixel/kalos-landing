@@ -6,18 +6,63 @@ import { ProcessStack } from "../react/process/ProcessStack";
 
 <section id={process.id} class="process" aria-labelledby="process-heading">
   <div class="container">
-    <h2 id="process-heading">{process.heading}</h2>
+    <div class="section-head">
+      <span class="tag"><span class="dot"></span>Introducing the Process</span>
+      <h2 id="process-heading">{process.heading}</h2>
+    </div>
     <p class="process__intro">{process.intro}</p>
     <ProcessStack client:visible steps={process.steps} />
+    <div class="method-strip">
+      <span class="method-label">Grounded in proven methodology</span>
+      <ul>
+        {process.methodology.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
   </div>
 </section>
 
 <style>
   .process {
-    padding-block: var(--space-16);
+    padding-block: 6.5rem;
   }
 
   .process__intro {
     max-width: 60ch;
+  }
+
+  .method-strip {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .method-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark-ink-dim);
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  .method-strip ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .method-strip li {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--teal-dim);
+    border: 1px solid var(--dark-line-strong);
+    padding: 0.4rem 0.75rem;
   }
 </style>
