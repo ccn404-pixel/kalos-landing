@@ -24,9 +24,9 @@ test("content module exports all required sections with correct shapes", async (
   assert.equal(c.process.methodology.length, 4);
   assert.equal(c.industries.items.length, 6);
 
-  assert.equal(c.whyKalos.bullets.length, 4);
-  assert.equal(c.whyKalos.whyKalosItems.length, 4);
-  assert.equal(c.whyKalos.quote, "You're never just a client. You're a partner.");
+  assert.equal(c.whyKalos.items.length, 5);
+  assert.equal(c.whyKalos.marquee.length, 7);
+  assert.equal(c.whyKalos.statement, "You're never just a client. You're a partner.");
 
   assert.equal(c.contact.email, "pbirdsong@kalostechnology.com");
 });

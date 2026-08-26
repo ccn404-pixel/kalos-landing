@@ -5,140 +5,192 @@ import { whyKalos } from "../data/content";
 import teamPhoto from "../assets/photos/team-collaboration.png";
 ---
 
-<section id="why-kalos" class="why-kalos" aria-labelledby="why-kalos-heading">
-  <div class="container" data-reveal>
+<section id="why-kalos" class="proof" aria-labelledby="why-kalos-heading">
+  <Image src={teamPhoto} alt="" width={1600} height={900} />
+  <div class="container proof-inner">
+    <span class="tag"><span class="dot"></span>Why Kalos</span>
     <h2 id="why-kalos-heading">{whyKalos.heading}</h2>
-    <p class="why-kalos__intro">{whyKalos.intro}</p>
-    <ul class="why-kalos__bullets">
-      {whyKalos.bullets.map((bullet) => (
-        <li>{bullet}</li>
-      ))}
-    </ul>
-    <p class="why-kalos__closing">{whyKalos.closing}</p>
+    <p class="proof-intro">{whyKalos.intro}</p>
+    <div class="proof-grid">
+      <ol>
+        {whyKalos.items.map((item, i) => (
+          <li><span class="num">{String(i + 1).padStart(2, "0")}</span>{item}</li>
+        ))}
+      </ol>
+      <div>
+        <p class="statement">You&rsquo;re never just a client.<br />You&rsquo;re a partner.</p>
+        <p class="proof-closing">{whyKalos.closing}</p>
+      </div>
+    </div>
   </div>
 
-  <div class="why-kalos__proof">
-    <Image src={teamPhoto} alt="" width={1600} height={900} class="why-kalos__photo" />
-    <div class="why-kalos__scrim" aria-hidden="true"></div>
-    <div class="why-kalos__quote-wrap" data-reveal>
-      <div>
-        <h3>{whyKalos.whyKalosHeading}</h3>
-        <ol>
-          {whyKalos.whyKalosItems.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ol>
-      </div>
-      <blockquote class="why-kalos__quote">
-        <p>{whyKalos.quote}</p>
-      </blockquote>
+  <div class="logo-reel" aria-hidden="true">
+    <div class="reel-track">
+      {[...whyKalos.marquee, ...whyKalos.marquee].map((item, i) => (
+        <span class="reel-item">
+          {i % 2 === 0 && <span class="reel-dot"></span>}
+          {item}
+        </span>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  .why-kalos {
-    padding-block: var(--space-16) 0;
-  }
-
-  .why-kalos__intro,
-  .why-kalos__closing {
-    max-width: 65ch;
-  }
-
-  .why-kalos__closing {
-    font-weight: 600;
-  }
-
-  .why-kalos__bullets {
-    padding-left: var(--space-6);
-  }
-
-  .why-kalos__proof {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 420px;
-    max-height: 620px;
-    margin-top: var(--space-16);
-    overflow: hidden;
-    color: var(--white);
+  .proof {
+    padding-block: 0;
+    min-height: 70vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
   }
 
-  .why-kalos__proof :global(.why-kalos__photo) {
+  .proof :global(img) {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
-    z-index: 0;
+    object-position: 50% 24%;
   }
 
-  .why-kalos__scrim {
+  .proof::before {
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(10, 14, 31, 0.9) 30%,
-      rgba(10, 14, 31, 0.35) 80%
-    );
+    background: linear-gradient(100deg, rgba(10, 13, 18, 0.92) 32%, rgba(10, 13, 18, 0.35) 78%);
     z-index: 1;
   }
 
-  .why-kalos__quote-wrap {
+  .proof::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(10, 13, 18, 0.55), transparent 40%);
+    z-index: 1;
+  }
+
+  .proof-inner {
     position: relative;
     z-index: 2;
+    width: 100%;
+    padding-block: 5rem;
+  }
+
+  .proof h2 {
+    font-size: clamp(1.9rem, 2.4vw + 1rem, 2.6rem);
+    margin-top: 1.25rem;
+    color: var(--dark-ink);
+    max-width: 24ch;
+  }
+
+  .proof-intro {
+    margin-top: 1rem;
+    max-width: 62ch;
+    color: var(--dark-ink-dim);
+    font-size: 1rem;
+  }
+
+  .proof-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
+    gap: 3rem;
     align-items: center;
-    padding: var(--space-16) var(--space-6);
-    max-width: var(--max-width);
-    margin-inline: auto;
-    width: 100%;
+    margin-top: 2.5rem;
   }
 
-  .why-kalos__quote {
-    background: rgba(10, 14, 31, 0.55);
-    border: 1px solid var(--border-on-dark);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8);
-    margin: 0;
-    font-size: var(--text-xl);
-    font-weight: 700;
-    font-style: italic;
-    backdrop-filter: blur(4px);
-  }
-
-  @media (max-width: 780px) {
-    .why-kalos__proof {
-      display: block;
-      aspect-ratio: auto;
-      min-height: 0;
-      max-height: none;
-    }
-
-    .why-kalos__proof :global(.why-kalos__photo) {
-      position: static;
-      aspect-ratio: 4 / 3;
-      object-position: 50% 20%;
-    }
-
-    .why-kalos__scrim {
-      background: linear-gradient(
-        to top,
-        rgba(10, 14, 31, 0.95) 20%,
-        rgba(10, 14, 31, 0.6) 100%
-      );
-    }
-
-    .why-kalos__quote-wrap {
+  @media (max-width: 860px) {
+    .proof-grid {
       grid-template-columns: 1fr;
-      position: static;
-      padding-block: var(--space-8) var(--space-16);
+    }
+  }
+
+  .proof-grid ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .proof-grid ol li {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--dark-ink-dim);
+  }
+
+  .proof-grid ol li .num {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .statement {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-style: italic;
+    font-size: clamp(1.9rem, 2.6vw + 1rem, 2.75rem);
+    color: var(--dark-ink);
+    line-height: 1.08;
+  }
+
+  .proof-closing {
+    margin-top: 1.25rem;
+    color: var(--dark-ink-dim);
+    font-size: 0.92rem;
+    max-width: 44ch;
+  }
+
+  .logo-reel {
+    position: relative;
+    z-index: 2;
+    margin-top: 4rem;
+    border-top: 1px solid var(--dark-line);
+    overflow: hidden;
+    padding-block: 1.5rem;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .reel-track {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: reel 32s linear infinite;
+  }
+
+  .reel-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--dark-ink-dim);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .reel-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 6px var(--teal);
+    flex-shrink: 0;
+  }
+
+  @keyframes reel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reel-track {
+      animation: none;
     }
   }
 </style>

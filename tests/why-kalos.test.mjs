@@ -4,12 +4,14 @@ import assert from "node:assert/strict";
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 
-test("why-kalos section renders bullets, why-kalos items, and pull quote", () => {
+test("why-kalos renders as one full-bleed proof section with a numbered list and a logo marquee", () => {
   execSync("npm run build", { cwd: process.cwd(), stdio: "pipe" });
   const html = fs.readFileSync("dist/index.html", "utf-8");
-  assert.match(html, /Built by Experts\. Trusted by Businesses\./);
-  assert.match(html, /Strong focus on reliability, scalability, and security/);
-  assert.match(html, /We focus on outcomes, not just code/);
-  assert.match(html, /You&#39;re never just a client\. ?You&#39;re a partner\.|You're never just a client\./);
+  assert.match(html, /Built by experts\. Trusted by businesses\./);
+  assert.match(html, /Strong focus on reliability, scalability, security, and results\./);
+  assert.match(html, /Pre-vetted, globally distributed developer talent\./);
+  assert.match(html, /You(?:&#39;|&rsquo;|')re never just a client\./);
   assert.match(html, /team-collaboration/);
+  assert.match(html, /class="logo-reel"/);
+  assert.match(html, /KALOS TECHNOLOGY/);
 });

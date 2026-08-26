@@ -193,24 +193,28 @@ export const industries = {
 };
 
 export const whyKalos = {
-  heading: "Built by Experts. Trusted by Businesses.",
+  heading: "Built by experts. Trusted by businesses.",
   intro:
-    "Kalos Technology brings together experienced software engineers, architects, and product strategists with deep expertise in building mission-critical custom solutions.",
-  bullets: [
-    "Strong focus on reliability, scalability, and security",
-    "Proven experience delivering complex systems",
-    "Modern technology stack and best development practices",
-    "Clear documentation and long-term maintainability",
+    "Kalos Technology brings together experienced software engineers, architects, and product strategists with deep expertise in building mission-critical custom solutions. Whether you need innovative software or specialized developers to accelerate your projects, we deliver both.",
+  items: [
+    "Strong focus on reliability, scalability, security, and results.",
+    "Proven experience delivering complex systems — both software and high-performing teams.",
+    "Modern technology stack and best development practices.",
+    "Clear documentation and long-term maintainability.",
+    "Pre-vetted, globally distributed developer talent.",
   ],
-  closing: "We don't just deliver software—we deliver confidence, clarity, and long-term value.",
-  whyKalosHeading: "Why Kalos?",
-  whyKalosItems: [
-    "We focus on outcomes, not just code",
-    "Every solution is built specifically for your needs",
-    "You work directly with experienced engineers and strategists",
-    "Clear communication, predictable delivery, and real results",
+  statement: "You're never just a client. You're a partner.",
+  closing:
+    "We don't just deliver software—we deliver confidence, clarity, and long-term value. We don't just fill seats—we integrate specialists who become an extension of your team.",
+  marquee: [
+    "KALOS TECHNOLOGY",
+    "BESPOKE SOFTWARE",
+    "SPECIALIZED TALENT",
+    "BUILT TO SCALE",
+    "YOUR PARTNER, NOT JUST A VENDOR",
+    "CUSTOM SOFTWARE DEVELOPMENT",
+    "STAFF AUGMENTATION",
   ],
-  quote: "You're never just a client. You're a partner.",
 };
 
 export const contact = {
