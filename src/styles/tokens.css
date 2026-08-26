@@ -12,6 +12,28 @@
   --border-on-dark: rgba(255, 255, 255, 0.14);
   --border-on-light: rgba(10, 14, 31, 0.12);
 
+  --dark-bg: #0a0d12;
+  --dark-panel: #10141b;
+  --dark-ink: #f0f2f0;
+  --dark-ink-dim: #8b93a0;
+  --dark-line: rgba(240, 242, 240, 0.13);
+  --dark-line-strong: rgba(240, 242, 240, 0.24);
+
+  --light-bg: #eef2f1;
+  --light-panel: #ffffff;
+  --light-ink: #0e1318;
+  --light-ink-dim: #545f5c;
+  --light-line: rgba(14, 19, 24, 0.11);
+  --light-line-strong: rgba(14, 19, 24, 0.22);
+
+  --teal: var(--teal-400);
+  --teal-dim: var(--teal-300);
+  --teal-deep: #0a8f8f;
+  --teal-wash: rgba(31, 230, 230, 0.1);
+  --violet: #8b7ff2;
+
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -46,5 +68,5 @@
     radial-gradient(55% 55% at 88% 8%, rgba(127, 242, 242, 0.3), transparent 60%),
     radial-gradient(75% 75% at 50% 105%, rgba(31, 230, 230, 0.2), transparent 60%);
 
-  --max-width: 1200px;
+  --max-width: 1240px;
 }

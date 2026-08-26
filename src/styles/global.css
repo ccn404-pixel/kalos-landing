@@ -88,36 +88,44 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-md);
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--teal);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
-  border: 2px solid transparent;
   cursor: pointer;
-  font-size: var(--text-base);
+  color: #04191a;
+  background: var(--teal);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(31, 230, 230, 0.3);
+}
+
 .btn-primary {
-  background: var(--gradient-teal);
-  color: var(--navy-950);
+  background: var(--teal);
+  color: #04191a;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--shadow-glow);
-}
-
-.btn-secondary {
+.btn-secondary,
+.btn-ghost {
   background: transparent;
-  color: var(--white);
-  border-color: var(--border-on-dark);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  color: var(--ink, var(--white));
+  border-color: var(--line-strong, var(--border-on-dark));
 }
 
-.btn-secondary:hover {
-  border-color: var(--teal-400);
+.btn-secondary:hover,
+.btn-ghost:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  box-shadow: none;
   transform: translateY(-2px);
 }
 
@@ -322,4 +330,82 @@ svg {
   .process-stack__item {
     position: static;
   }
+}
+
+/* Theme-block pattern: section defaults to dark, .on-light flips it.
+   Component CSS should reference --bg/--panel/--ink/--ink-dim/--line/
+   --line-strong, never --dark-*/--light-* directly, so the same rules
+   work in either theme. */
+section {
+  --bg: var(--dark-bg);
+  --panel: var(--dark-panel);
+  --ink: var(--dark-ink);
+  --ink-dim: var(--dark-ink-dim);
+  --line: var(--dark-line);
+  --line-strong: var(--dark-line-strong);
+}
+
+section.on-light {
+  --bg: var(--light-bg);
+  --panel: var(--light-panel);
+  --ink: var(--light-ink);
+  --ink-dim: var(--light-ink-dim);
+  --line: var(--light-line);
+  --line-strong: var(--light-line-strong);
+}
+
+/* Global grain texture overlay — static, no animation, so it needs no
+   prefers-reduced-motion gating. pointer-events:none keeps it from
+   blocking clicks. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+}
+
+/* Mono eyebrow tag: bordered pill, optional status dot */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line-strong, var(--border-on-dark));
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim, var(--white));
+  background: rgba(127, 127, 127, 0.04);
+}
+
+.tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--teal);
+}
+
+.tag.status-off .dot {
+  background: var(--ink-dim, var(--white));
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-dim, var(--white));
+  letter-spacing: 0.05em;
+  opacity: 0.7;
 }
