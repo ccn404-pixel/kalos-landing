@@ -2,13 +2,14 @@
 // src/components/Header.astro
 import { Image } from "astro:assets";
 import { site, nav, hero } from "../data/content";
-import logoLockup from "../assets/logo-lockup.png";
+import logoIcon from "../assets/logo-icon.png";
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="/" class="site-header__logo" aria-label={`${site.name} home`}>
-      <Image src={logoLockup} alt="" width={140} height={50} />
+      <Image src={logoIcon} alt="" width={16} height={16} class="site-header__mark" />
+      <span aria-hidden="true">KALOS</span>
     </a>
 
     <button
@@ -45,9 +46,10 @@ import logoLockup from "../assets/logo-lockup.png";
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--navy-950);
-    color: var(--white);
-    border-bottom: 1px solid var(--border-on-dark);
+    background: rgba(10, 13, 18, 0.86);
+    backdrop-filter: blur(10px);
+    color: var(--dark-ink);
+    border-bottom: 1px solid var(--dark-line);
   }
 
   .site-header__inner {
@@ -58,16 +60,28 @@ import logoLockup from "../assets/logo-lockup.png";
   }
 
   .site-header__logo {
-    width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: var(--dark-ink);
+    text-decoration: none;
+  }
+
+  .site-header__logo :global(.site-header__mark) {
+    width: 16px;
     height: auto;
-    display: block;
+    flex-shrink: 0;
   }
 
   .site-header__toggle {
     background: transparent;
     border: 1px solid var(--border-on-dark);
     color: var(--white);
-    border-radius: var(--radius-md);
+    border-radius: 0;
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-lg);
     display: none;
@@ -89,12 +103,12 @@ import logoLockup from "../assets/logo-lockup.png";
 
   .site-header__nav a {
     text-decoration: none;
-    color: var(--white);
+    color: var(--dark-ink-dim);
     font-size: var(--text-sm);
   }
 
   .site-header__nav a:hover {
-    color: var(--teal-400);
+    color: var(--dark-ink);
   }
 
   @media (max-width: 860px) {

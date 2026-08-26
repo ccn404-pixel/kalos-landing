@@ -15,5 +15,5 @@ test("header renders all nav links, logo, and CTA", () => {
   assert.match(html, /Start the conversation/);
   assert.match(html, /aria-expanded="false"/);
   assert.match(html, /<a href="\/" class="site-header__logo"/);
-  assert.match(html, /logo-lockup/);
+  assert.match(html, /logo-icon/);
 });
