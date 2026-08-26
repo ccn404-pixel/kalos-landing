@@ -68,6 +68,14 @@ export const services = {
       description: "Connect tools, eliminate manual work, improve efficiency",
     },
     {
+      title: "Digital transformation consulting",
+      description: "Modernize operations and translate business goals into technical roadmaps.",
+    },
+    {
+      title: "Platform as a Service (Cloud)",
+      description: "Scalable, secure cloud infrastructure that adapts as you grow.",
+    },
+    {
       title: "Modernization & optimization",
       description: "Upgrade legacy systems without disrupting operations",
     },

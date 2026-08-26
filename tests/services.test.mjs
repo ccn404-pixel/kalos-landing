@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 
-test("services section renders id anchor and all 5 service cards", () => {
+test("services section renders id anchor and all 7 service tiles, no photo", () => {
   execSync("npm run build", { cwd: process.cwd(), stdio: "pipe" });
   const html = fs.readFileSync("dist/index.html", "utf-8");
   assert.match(html, /id="custom-software"/);
@@ -12,6 +12,8 @@ test("services section renders id anchor and all 5 service cards", () => {
   assert.match(html, /SaaS product development/);
   assert.match(html, /Web (?:&#38;|&amp;|&) ?cloud applications/);
   assert.match(html, /System integrations (?:&#38;|&amp;|&) ?automation/);
+  assert.match(html, /Digital transformation consulting/);
+  assert.match(html, /Platform as a Service \(Cloud\)/);
   assert.match(html, /Modernization (?:&#38;|&amp;|&) ?optimization/);
-  assert.match(html, /pair-coworking/);
+  assert.ok(!html.includes("pair-coworking"), "photo tile should be gone, replaced by the status panel");
 });
