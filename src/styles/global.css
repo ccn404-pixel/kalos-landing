@@ -30,8 +30,8 @@ body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: 1.6;
-  color: var(--ink-900);
-  background: var(--white);
+  color: var(--dark-ink);
+  background: var(--dark-bg);
 }
 
 h1,
@@ -55,6 +55,20 @@ img,
 svg {
   max-width: 100%;
   display: block;
+}
+
+.section-head {
+  max-width: 56ch;
+  margin-bottom: 2rem;
+}
+
+.section-head .tag {
+  margin-bottom: 1.25rem;
+}
+
+.section-head h2 {
+  font-size: clamp(1.95rem, 2.5vw + 1rem, 2.85rem);
+  font-weight: 800;
 }
 
 .container {
@@ -396,6 +410,8 @@ section {
   --ink-dim: var(--dark-ink-dim);
   --line: var(--dark-line);
   --line-strong: var(--dark-line-strong);
+  background: var(--bg);
+  color: var(--ink);
 }
 
 section.on-light {
