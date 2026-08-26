@@ -3,74 +3,74 @@
 import { staffAugIntro } from "../data/content";
 ---
 
-<section id={staffAugIntro.id} class="staff-aug-intro" aria-labelledby="staff-aug-heading">
+<section id={staffAugIntro.id} class="staffaug" aria-labelledby="staff-aug-heading">
   <div class="container">
-    <p class="eyebrow">{staffAugIntro.eyebrow}</p>
-    <h2 id="staff-aug-heading">{staffAugIntro.headline}</h2>
-    <p class="staff-aug-intro__subhead">{staffAugIntro.subhead}</p>
+    <div class="section-head">
+      <span class="tag"><span class="dot"></span>{staffAugIntro.eyebrow}</span>
+      <h2 id="staff-aug-heading">{staffAugIntro.headline}</h2>
+      <p class="staffaug__subhead">{staffAugIntro.subhead}</p>
+    </div>
 
-    <div class="staff-aug-intro__panels">
-      <div class="panel" data-reveal="left">
+    <div class="sa-panels">
+      <div class="sa-panel">
         <h3>{staffAugIntro.whatIsHeading}</h3>
         <p>{staffAugIntro.whatIsBody}</p>
       </div>
-      <div class="panel panel--accent" data-reveal="right" style={{ "--reveal-delay": "0.12s" }}>
+      <div class="sa-panel sa-panel--accent">
         <h3>{staffAugIntro.differenceHeading}</h3>
         <p>{staffAugIntro.differenceBody}</p>
       </div>
     </div>
+
+    <slot />
   </div>
 </section>
 
 <style>
-  .staff-aug-intro {
-    padding-block: var(--space-16);
-    background: var(--lavender-50);
+  .staffaug {
+    padding-block: 6.5rem;
   }
 
-  .staff-aug-intro h2 {
-    font-size: var(--text-xl);
-  }
-
-  .staff-aug-intro__subhead {
+  .staffaug__subhead {
+    margin-top: 1rem;
+    color: var(--dark-ink-dim);
+    font-size: 1.02rem;
     max-width: 60ch;
-    font-size: var(--text-lg);
   }
 
-  .staff-aug-intro__panels {
+  .sa-panels {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
-    margin-top: var(--space-8);
-  }
-
-  .panel {
-    background: var(--white);
-    border: 1px solid var(--border-on-light);
-    border-radius: var(--radius-lg);
-    padding: var(--space-8);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  .panel:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-card-hover);
-    border-color: rgba(31, 230, 230, 0.4);
-  }
-
-  .panel--accent {
-    background: var(--navy-950);
-    color: var(--white);
-    border-color: transparent;
-  }
-
-  .panel--accent:hover {
-    box-shadow: var(--shadow-glow);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
   }
 
   @media (max-width: 780px) {
-    .staff-aug-intro__panels {
+    .sa-panels {
       grid-template-columns: 1fr;
     }
+  }
+
+  .sa-panel {
+    border: 1px solid var(--dark-line-strong);
+    padding: 1.75rem;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .sa-panel--accent {
+    background: radial-gradient(120% 100% at 100% 0%, var(--teal-wash), transparent 60%), rgba(255, 255, 255, 0.02);
+    border-color: var(--teal);
+  }
+
+  .sa-panel h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--dark-ink);
+  }
+
+  .sa-panel p {
+    font-size: 0.9rem;
+    color: var(--dark-ink-dim);
   }
 </style>

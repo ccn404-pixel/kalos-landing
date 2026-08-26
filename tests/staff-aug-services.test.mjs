@@ -12,4 +12,5 @@ test("staff augmentation services section renders all 4 services", () => {
   assert.match(html, /Technical Expertise on Demand/);
   assert.match(html, /Hybrid Partnerships/);
   assert.match(html, /React, Node\.js, Cloud Architecture, DevOps/);
+  assert.match(html, /AI, ML (?:&#38;|&amp;|&) ?Advanced Technical Roles/);
 });

@@ -15,10 +15,10 @@ test("content module exports all required sections with correct shapes", async (
   assert.equal(c.problem.items.length, 4);
 
   assert.equal(c.staffAugBenefits.items.length, 7);
-  assert.ok(c.staffAugBenefits.items.some((i) => i.title.includes("50%")));
-  assert.ok(c.staffAugBenefits.items.some((i) => i.title.includes("30-40%")));
+  assert.ok(c.staffAugBenefits.items.some((i) => i.n === "50%"));
+  assert.ok(c.staffAugBenefits.items.some((i) => i.n === "30-40%"));
 
-  assert.equal(c.staffAugServices.items.length, 4);
+  assert.equal(c.staffAugServices.items.length, 5);
 
   assert.equal(c.process.steps.length, 5);
   assert.equal(c.process.methodology.length, 4);

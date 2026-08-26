@@ -99,35 +99,13 @@ export const staffAugIntro = {
 export const staffAugBenefits = {
   heading: "Why augmentation over traditional hiring?",
   items: [
-    {
-      title: "50% Faster Onboarding",
-      description:
-        "Experienced developers productive within 1-2 weeks (vs. 3-6 months traditional hiring)",
-    },
-    {
-      title: "30-40% Cost Savings",
-      description: "No recruitment fees, benefits overhead, or onboarding waste",
-    },
-    {
-      title: "Zero HR Complexity",
-      description: "We manage recruitment, payroll, taxes, compliance, background checks",
-    },
-    {
-      title: "Full Control",
-      description: "Your team directs work; augmented staff report to you",
-    },
-    {
-      title: "Flexible Scaling",
-      description: "Add/reduce capacity in weeks as project demands change",
-    },
-    {
-      title: "Global Talent Access",
-      description: "Pre-vetted developers across multiple time zones and specializations",
-    },
-    {
-      title: "Cultural Integration",
-      description: "Pre-matched for technical fit and team alignment",
-    },
+    { n: "50%", l: "Faster Onboarding", d: "Experienced developers productive within 1-2 weeks (vs. 3-6 months traditional hiring)" },
+    { n: "30-40%", l: "Cost Savings", d: "No recruitment fees, benefits overhead, or onboarding waste" },
+    { n: "0", l: "HR Complexity", d: "We manage recruitment, payroll, taxes, compliance, background checks" },
+    { n: "100%", l: "Client Control", d: "Your team directs work; augmented staff report to you" },
+    { n: "Flexible", l: "Scaling", d: "Add/reduce capacity in weeks as project demands change" },
+    { n: "Global", l: "Talent Access", d: "Pre-vetted developers across multiple time zones and specializations" },
+    { n: "Cultural", l: "Integration", d: "Pre-matched for technical fit and team alignment" },
   ],
 };
 
@@ -143,6 +121,11 @@ export const staffAugServices = {
       title: "Flexible Team Scaling",
       description:
         "Scale your development capacity based on project demands—no long-term commitments, no overhead.",
+    },
+    {
+      title: "AI, ML & Advanced Technical Roles",
+      description:
+        "Specialized talent in artificial intelligence, machine learning, and emerging technical domains.",
     },
     {
       title: "Technical Expertise on Demand",

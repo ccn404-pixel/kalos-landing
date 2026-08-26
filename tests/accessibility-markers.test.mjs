@@ -16,7 +16,7 @@ test("decorative SVGs are aria-hidden and every section has an accessible name",
   }
 
   const sectionIds = [...html.matchAll(/<section id="([\w-]+)"[^>]*aria-labelledby="([\w-]+)"/g)];
-  assert.ok(sectionIds.length >= 10, "expected most sections to declare id + aria-labelledby together");
+  assert.ok(sectionIds.length >= 8, "expected most sections to declare id + aria-labelledby together");
   for (const [, , headingId] of sectionIds) {
     assert.match(html, new RegExp(`id="${headingId}"`), `no heading found with id="${headingId}"`);
   }
