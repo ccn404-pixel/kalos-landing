@@ -18,7 +18,7 @@ import teamPhoto from "../assets/photos/team-collaboration.png";
   </div>
 
   <div class="why-kalos__proof">
-    <Image src={teamPhoto} alt="" width={1600} height={3900} class="why-kalos__photo" />
+    <Image src={teamPhoto} alt="" width={1600} height={900} class="why-kalos__photo" />
     <div class="why-kalos__scrim" aria-hidden="true"></div>
     <div class="why-kalos__quote-wrap" data-reveal>
       <div>
@@ -56,7 +56,10 @@ import teamPhoto from "../assets/photos/team-collaboration.png";
 
   .why-kalos__proof {
     position: relative;
-    min-height: 60vh;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 420px;
+    max-height: 620px;
     margin-top: var(--space-16);
     overflow: hidden;
     color: var(--white);
@@ -70,7 +73,7 @@ import teamPhoto from "../assets/photos/team-collaboration.png";
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: 50% 20%;
     z-index: 0;
   }
 
@@ -111,8 +114,31 @@ import teamPhoto from "../assets/photos/team-collaboration.png";
   }
 
   @media (max-width: 780px) {
+    .why-kalos__proof {
+      display: block;
+      aspect-ratio: auto;
+      min-height: 0;
+      max-height: none;
+    }
+
+    .why-kalos__proof :global(.why-kalos__photo) {
+      position: static;
+      aspect-ratio: 4 / 3;
+      object-position: 50% 20%;
+    }
+
+    .why-kalos__scrim {
+      background: linear-gradient(
+        to top,
+        rgba(10, 14, 31, 0.95) 20%,
+        rgba(10, 14, 31, 0.6) 100%
+      );
+    }
+
     .why-kalos__quote-wrap {
       grid-template-columns: 1fr;
+      position: static;
+      padding-block: var(--space-8) var(--space-16);
     }
   }
 </style>

@@ -14,7 +14,7 @@ export function ServiceBento({ items, photoSrc }: ServiceBentoProps) {
   return (
     <div className="service-bento">
       <RevealOnScroll direction="left" className="service-bento__photo-tile">
-        <img src={photoSrc} alt="" width={800} height={1400} loading="lazy" />
+        <img src={photoSrc} alt="" width={1000} height={563} loading="lazy" />
       </RevealOnScroll>
       {items.map((item, i) => (
         <RevealOnScroll

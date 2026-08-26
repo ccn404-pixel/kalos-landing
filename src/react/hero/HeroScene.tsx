@@ -27,14 +27,20 @@ function NetworkGroup({ reduceMotion }: { reduceMotion: boolean }) {
               args={[new Float32Array([a.x, a.y, a.z, b.x, b.y, b.z]), 3]}
             />
           </bufferGeometry>
-          <lineBasicMaterial color="#1fe6e6" transparent opacity={0.18} />
+          <lineBasicMaterial color="#1fe6e6" transparent opacity={0.26} />
         </line>
       ))}
       {nodes.map((n, i) => (
-        <mesh key={i} position={n}>
-          <sphereGeometry args={[0.045, 12, 12]} />
-          <meshBasicMaterial color="#1fe6e6" transparent opacity={0.85} />
-        </mesh>
+        <group key={i} position={n}>
+          <mesh>
+            <sphereGeometry args={[0.11, 12, 12]} />
+            <meshBasicMaterial color="#1fe6e6" transparent opacity={0.08} />
+          </mesh>
+          <mesh>
+            <sphereGeometry args={[0.055, 12, 12]} />
+            <meshBasicMaterial color="#7ff2f2" transparent opacity={0.95} />
+          </mesh>
+        </group>
       ))}
     </group>
   );

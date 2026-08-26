@@ -8,9 +8,9 @@ interface Chip {
 }
 
 const CHIPS: Chip[] = [
-  { label: "React · Node.js · Cloud Architecture · DevOps", style: { top: "10%", right: "4%" }, delay: 0 },
-  { label: "Healthcare · SaaS · Logistics · Finance", style: { bottom: "22%", left: "2%" }, delay: 0.4 },
-  { label: "Discovery to Launch and Scale", style: { top: "56%", right: "0%" }, delay: 0.8 },
+  { label: "React · Node.js · Cloud Architecture · DevOps", style: { top: "8%", right: "4%" }, delay: 0 },
+  { label: "Healthcare · SaaS · Logistics · Finance", style: { top: "46%", right: "1%" }, delay: 0.4 },
+  { label: "Discovery to Launch and Scale", style: { bottom: "8%", right: "6%" }, delay: 0.8 },
 ];
 
 export function HeroChips() {
