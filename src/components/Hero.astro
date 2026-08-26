@@ -2,24 +2,55 @@
 // src/components/Hero.astro
 import { Image } from "astro:assets";
 import { hero } from "../data/content";
-import { HeroIsland } from "../react/hero/HeroIsland";
 import hologramHands from "../assets/photos/hologram-hands.png";
 ---
 
 <section id="hero" class="hero" aria-labelledby="hero-heading">
-  <div class="hero__mesh" aria-hidden="true"></div>
-  <div class="hero__photo-layer" aria-hidden="true">
-    <Image src={hologramHands} alt="" width={640} height={581} />
-  </div>
-  <HeroIsland client:load />
-  <div class="container hero__inner">
-    <div class="hero__copy">
-      <p class="hero__eyebrow" data-reveal style={{ "--reveal-delay": "0s" }}>{hero.eyebrow}</p>
-      <h1 id="hero-heading" data-reveal style={{ "--reveal-delay": "0.1s" }}>{hero.headline}</h1>
-      <p class="hero__subhead" data-reveal style={{ "--reveal-delay": "0.2s" }}>{hero.subhead}</p>
-      <div class="hero__actions" data-reveal style={{ "--reveal-delay": "0.3s" }}>
-        <a href={hero.primaryCta.href} class="btn btn-primary">{hero.primaryCta.label}</a>
-        <a href={hero.secondaryCta.href} class="btn btn-secondary">{hero.secondaryCta.label}</a>
+  <div class="hero-grid">
+    <div class="container hero-copy">
+      <span class="tag"><span class="dot"></span>{hero.eyebrow}</span>
+      <h1 id="hero-heading">Software that fits.<br />Teams that scale.</h1>
+      <p class="sub">{hero.subhead}</p>
+      <div class="hero-actions">
+        <a href={hero.primaryCta.href} class="btn">{hero.primaryCta.label}</a>
+        <a href={hero.secondaryCta.href} class="btn btn-ghost">{hero.secondaryCta.label}</a>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><span class="n">100%</span><span class="l">Client Ownership</span></div>
+        <div class="stat"><span class="n">0</span><span class="l">Recruitment Overhead</span></div>
+        <div class="stat"><span class="n">1&ndash;2wk</span><span class="l">To Productive Onboarding</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="photo-layer" aria-hidden="true">
+        <Image src={hologramHands} alt="" width={640} height={581} />
+      </div>
+      <div class="branch">
+        <div class="branch-node">✓ KALOS ENGAGEMENT</div>
+        <div class="branch-connectors">
+          <svg viewBox="0 0 420 56" preserveAspectRatio="none" aria-hidden="true">
+            <path class="branch-path" d="M210,0 L210,16 L90,16 L90,56" />
+            <path class="branch-pulse" d="M210,0 L210,16 L90,16 L90,56" pathLength="100" />
+            <path class="branch-path" d="M210,0 L210,16 L330,16 L330,56" />
+            <path class="branch-pulse rev" d="M210,0 L210,16 L330,16 L330,56" pathLength="100" />
+            <circle cx="210" cy="16" r="2.5" fill="var(--teal)" />
+          </svg>
+        </div>
+        <div class="branch-outputs">
+          <div class="branch-card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="1.5" stroke="currentColor" stroke-width="1.5" /><path d="M9 20h6M12 17v3" stroke="currentColor" stroke-width="1.5" /></svg>
+            <h3>Custom Software</h3>
+            <p>Built from the ground up, yours entirely.</p>
+            <span class="status"><span class="dot"></span>BUILT &amp; OWNED</span>
+          </div>
+          <div class="branch-card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" /><circle cx="17" cy="8" r="3" stroke="currentColor" stroke-width="1.5" /><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M13 20c0-3 2-5 4-5s4 2 4 5" stroke="currentColor" stroke-width="1.5" /></svg>
+            <h3>Staff Augmentation</h3>
+            <p>Embedded engineers, reporting to you.</p>
+            <span class="status"><span class="dot"></span>EMBEDDED</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -27,84 +58,229 @@ import hologramHands from "../assets/photos/hologram-hands.png";
 
 <style>
   .hero {
-    position: relative;
-    background: var(--navy-950);
-    color: var(--white);
-    padding-block: var(--space-24) var(--space-16);
+    padding-block: 0;
     overflow: hidden;
-    min-height: 90vh;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 92vh;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+
+  .hero-copy {
+    padding-block: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.7rem, 4.2vw + 1rem, 4.4rem);
+    font-weight: 800;
+    max-width: 16ch;
+  }
+
+  .hero-copy .sub {
+    max-width: 44ch;
+    color: var(--dark-ink-dim);
+    font-size: 1.08rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+
+  .stat-strip {
+    display: flex;
+    gap: 2.25rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .stat .n {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--teal-dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat .l {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark-ink-dim);
+  }
+
+  .hero-visual {
+    position: relative;
+    border-left: 1px solid var(--dark-line);
+    background:
+      radial-gradient(55% 45% at 75% 25%, rgba(31, 230, 230, 0.16), transparent 65%),
+      radial-gradient(40% 35% at 15% 80%, rgba(139, 127, 242, 0.12), transparent 65%),
+      var(--dark-panel);
+    overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
-  .hero__mesh {
+  .hero-visual .photo-layer {
     position: absolute;
     inset: 0;
-    background: var(--gradient-mesh);
-    pointer-events: none;
-    z-index: 0;
+    opacity: 0.22;
   }
 
-  .hero__photo-layer {
-    position: absolute;
-    right: -5%;
-    bottom: -8%;
-    width: min(46vw, 640px);
-    opacity: 0.35;
-    filter: blur(0.5px) saturate(1.1);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .hero__photo-layer :global(img) {
+  .hero-visual .photo-layer :global(img) {
     width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
+    height: 100%;
+    object-fit: cover;
   }
 
-  .hero__inner {
-    position: relative;
-    z-index: 3;
-  }
-
-  .hero__eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--teal-400);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-  }
-
-  .hero h1 {
-    font-size: var(--text-3xl);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    max-width: 22ch;
-  }
-
-  .hero__subhead {
-    font-size: var(--text-lg);
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 46ch;
-  }
-
-  .hero__actions {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-</style>
-
-<style is:global>
-  .hero-island {
+  .hero-visual .photo-layer::after {
+    content: "";
     position: absolute;
     inset: 0;
-    z-index: 2;
-    pointer-events: none;
+    background: linear-gradient(165deg, rgba(10, 13, 18, 0.35), rgba(10, 13, 18, 0.92) 78%);
   }
 
-  .hero-island canvas {
-    pointer-events: none;
+  .branch {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .branch-node {
+    border: 1px solid var(--teal);
+    background: rgba(16, 20, 27, 0.9);
+    padding: 0.85rem 1.6rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    color: var(--teal-dim);
+    box-shadow: 0 0 32px rgba(31, 230, 230, 0.18);
+  }
+
+  .branch-connectors {
+    width: 100%;
+    max-width: 420px;
+    height: 56px;
+    position: relative;
+  }
+
+  .branch-connectors svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .branch-path {
+    stroke: var(--dark-line-strong);
+    stroke-width: 1.25;
+    fill: none;
+  }
+
+  .branch-pulse {
+    stroke: var(--teal);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 8 90;
+    opacity: 0.9;
+    animation: flowmove 2.6s linear infinite;
+  }
+
+  .branch-pulse.rev {
+    animation-delay: 1.3s;
+  }
+
+  @keyframes flowmove {
+    0% { stroke-dashoffset: 98; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .branch-pulse {
+      animation: none;
+      opacity: 0.4;
+    }
+  }
+
+  .branch-outputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .branch-card {
+    border: 1px solid var(--dark-line-strong);
+    background: rgba(16, 20, 27, 0.75);
+    padding: 1.25rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .branch-card .ic {
+    width: 26px;
+    height: 26px;
+    color: var(--teal);
+  }
+
+  .branch-card h3 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--dark-ink);
+  }
+
+  .branch-card p {
+    font-size: 0.8rem;
+    color: var(--dark-ink-dim);
+  }
+
+  .branch-card .status {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    color: var(--teal-dim);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.15rem;
+  }
+
+  .branch-card .status .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 6px var(--teal);
   }
 </style>

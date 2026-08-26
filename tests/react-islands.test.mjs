@@ -11,5 +11,5 @@ import fs from "node:fs";
 test("a React island SSRs its content into the static build", () => {
   execSync("npm run build", { cwd: process.cwd(), stdio: "pipe" });
   const html = fs.readFileSync("dist/index.html", "utf-8");
-  assert.match(html, /class="hero-island"/);
+  assert.match(html, /class="process-stack"/);
 });
