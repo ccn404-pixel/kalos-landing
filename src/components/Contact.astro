@@ -4,31 +4,19 @@ import { contact } from "../data/content";
 ---
 
 <section id={contact.id} class="contact" aria-labelledby="contact-heading">
-  <div class="contact__mesh" aria-hidden="true"></div>
-  <svg class="contact__motif" aria-hidden="true" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="var(--teal-400)" stroke-opacity="0.15" stroke-width="1">
-      <line x1="40" y1="340" x2="160" y2="220" />
-      <line x1="160" y1="220" x2="260" y2="260" />
-      <line x1="260" y1="260" x2="360" y2="120" />
-      <line x1="160" y1="220" x2="180" y2="80" />
-    </g>
-    <g fill="var(--teal-400)" fill-opacity="0.2">
-      <circle cx="40" cy="340" r="4" />
-      <circle cx="160" cy="220" r="4" />
-      <circle cx="260" cy="260" r="4" />
-      <circle cx="360" cy="120" r="4" />
-      <circle cx="180" cy="80" r="4" />
-    </g>
-  </svg>
+  <div class="contact-mesh" aria-hidden="true"></div>
   <div class="container contact__inner">
     <div class="contact__copy" data-reveal="left">
+      <span class="tag"><span class="dot"></span>Contact</span>
       <h2 id="contact-heading">{contact.heading}</h2>
       <p>{contact.body}</p>
-      <h3>{contact.ctaHeading}</h3>
-      <p>
-        Website: <a href={`https://${contact.website}`}>{contact.website}</a><br />
-        Email: <a href={`mailto:${contact.email}`}>{contact.email}</a>
-      </p>
+      <div class="contact-cta-block">
+        <p class="mono contact-cta-label">{contact.ctaHeading}</p>
+      </div>
+      <div class="contact-direct">
+        <a href={`mailto:${contact.email}`} class="mono">{contact.email}</a>
+        <a href={`https://${contact.website}`} class="mono">{contact.website}</a>
+      </div>
     </div>
 
     <form
@@ -86,22 +74,13 @@ import { contact } from "../data/content";
     overflow: hidden;
   }
 
-  .contact__mesh {
+  .contact-mesh {
     position: absolute;
     inset: 0;
-    background: var(--gradient-mesh);
-    opacity: 0.6;
+    background:
+      radial-gradient(55% 55% at 15% 20%, rgba(31, 230, 230, 0.14), transparent 65%),
+      radial-gradient(45% 45% at 90% 90%, rgba(139, 127, 242, 0.1), transparent 65%);
     pointer-events: none;
-  }
-
-  .contact__motif {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 40%;
-    max-width: 400px;
-    pointer-events: none;
-    z-index: 0;
   }
 
   .contact__inner {
@@ -122,7 +101,10 @@ import { contact } from "../data/content";
   .contact__form {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 1.25rem;
+    border: 1px solid var(--dark-line-strong);
+    background: rgba(16, 20, 27, 0.55);
+    padding: 2rem;
   }
 
   .field {
@@ -139,13 +121,47 @@ import { contact } from "../data/content";
   .field input,
   .field select,
   .field textarea {
-    background: var(--navy-900);
-    border: 1px solid var(--border-on-dark);
-    border-radius: var(--radius-md);
-    color: var(--white);
-    padding: var(--space-3);
+    background: rgba(10, 13, 18, 0.7);
+    border: 1px solid var(--dark-line-strong);
+    border-radius: 0;
+    color: var(--dark-ink);
+    padding: 0.75rem 0.85rem;
     font-family: inherit;
-    font-size: var(--text-base);
+    font-size: 0.92rem;
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px var(--teal);
+  }
+
+  .contact-cta-label {
+    margin-top: 0;
+  }
+
+  .contact-direct {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .contact-direct a {
+    color: var(--teal-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .contact-direct a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-direct span {
+    color: var(--dark-ink-dim);
+    font-size: 0.85rem;
   }
 
   @media (max-width: 780px) {
