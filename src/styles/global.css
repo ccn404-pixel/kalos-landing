@@ -305,7 +305,7 @@ svg {
   justify-content: space-between;
   align-items: center;
   font-size: 0.75rem;
-  color: var(--ink-dim);
+  color: var(--light-ink-dim);
   border-bottom: 1px dashed var(--line);
   padding-bottom: 0.6rem;
 }
@@ -317,7 +317,7 @@ svg {
 
 .panel-title {
   font-family: var(--font-display);
-  color: var(--ink);
+  color: var(--light-ink);
   font-size: 1.1rem;
   font-weight: 700;
   margin-top: auto;
@@ -348,11 +348,12 @@ svg {
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color: var(--light-ink);
 }
 
 .bento-tile p {
   font-size: 0.9rem;
-  color: var(--ink-dim);
+  color: var(--light-ink-dim);
 }
 
 .process-stack {
