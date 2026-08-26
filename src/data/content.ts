@@ -21,12 +21,28 @@ export const hero = {
   secondaryCta: { label: "See our approach", href: "/#approach" },
 };
 
-export const about = {
-  heading: "A partner you can rely on",
-  overview:
-    "Kalos Technology is a bespoke software development company specializing in custom-built digital solutions designed around your business goals — not generic templates. We partner with growing companies and enterprises to design, build, and scale software that improves efficiency, unlocks new revenue, and supports long-term growth.",
-  reliability:
-    "At Kalos Technology, we work as an extension of your team — aligning technology decisions with business objectives from day one. Our approach minimizes risk, accelerates decision-making, and ensures every solution is built to evolve with your organization.",
+export const problem = {
+  id: "about",
+  tag: "The Problem",
+  heading: "Off-the-shelf software wasn't built for you.",
+  items: [
+    {
+      title: "Generic templates",
+      description: "You bend your workflows to fit someone else's product roadmap.",
+    },
+    {
+      title: "Licensing limits",
+      description: "Features get gated, seats get capped, and pricing scales against you.",
+    },
+    {
+      title: "Slow to evolve",
+      description: "Every change waits on someone else's release cycle, not yours.",
+    },
+    {
+      title: "Divided ownership",
+      description: "You rent the system. You never actually own what runs your business.",
+    },
+  ],
 };
 
 export const services = {
@@ -55,16 +71,14 @@ export const services = {
       title: "Modernization & optimization",
       description: "Upgrade legacy systems without disrupting operations",
     },
-  ],
-};
-
-export const whyCustom = {
-  heading: "Why custom instead of off-the-shelf?",
-  items: [
-    "Built exactly for your workflows",
-    "Easier to scale and evolve",
-    "No unnecessary features or licensing limits",
-    "Full ownership and long-term flexibility",
+    {
+      title: "Database architecture & optimization",
+      description: "High-performance data systems designed for scale and reliability",
+    },
+    {
+      title: "Mobile app development",
+      description: "Native and cross-platform mobile solutions for iOS and Android",
+    },
   ],
 };
 

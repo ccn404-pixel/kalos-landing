@@ -1,69 +1,145 @@
 ---
 // src/components/About.astro
 import { Image } from "astro:assets";
-import { about } from "../data/content";
+import { problem } from "../data/content";
 import portraitWoman from "../assets/photos/portrait-woman.png";
 ---
 
-<section id="about" class="about" aria-labelledby="about-heading">
-  <div class="container about__grid">
-    <div class="about__media" data-reveal="left">
-      <Image src={portraitWoman} alt="" width={640} height={800} class="about__photo" />
+<section id={problem.id} class="problem on-light" aria-labelledby="about-heading">
+  <div class="container problem-layout">
+    <div class="problem-photo">
+      <Image src={portraitWoman} alt="" width={640} height={800} />
     </div>
-    <div class="about__copy" data-reveal="right">
-      <h2 id="about-heading">{about.heading}</h2>
-      <p>{about.overview}</p>
-      <p>{about.reliability}</p>
+    <div>
+      <div class="section-head">
+        <span class="tag status-off"><span class="dot"></span>{problem.tag}</span>
+        <h2 id="about-heading">{problem.heading}</h2>
+      </div>
+      <div class="problem-grid">
+        {problem.items.map((item) => (
+          <div class="problem-card">
+            <div class="ic">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /><rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /><rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /><rect x="13" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /></svg>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .about {
-    position: relative;
-    background: var(--navy-950);
-    color: var(--white);
-    padding-block: var(--space-24);
+  .problem {
+    padding-block: 6.5rem;
   }
 
-  .about__grid {
+  .problem-layout {
     display: grid;
-    grid-template-columns: minmax(240px, 340px) 1fr;
-    gap: var(--space-12);
-    align-items: center;
+    grid-template-columns: 0.6fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
   }
 
-  .about__media {
+  @media (max-width: 900px) {
+    .problem-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .problem-photo {
     aspect-ratio: 4 / 5;
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--line-strong);
+    position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-card);
   }
 
-  .about__media :global(.about__photo) {
+  .problem-photo :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 32%;
+    object-position: center 30%;
   }
 
-  .about__copy {
-    max-width: 60ch;
+  .problem-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 -70px 70px -40px rgba(14, 19, 24, 0.35);
   }
 
-  .about h2 {
-    font-size: var(--text-xl);
-    max-width: 20ch;
+  .section-head {
+    max-width: 56ch;
+    margin-bottom: 2rem;
   }
 
-  @media (max-width: 780px) {
-    .about__grid {
+  .section-head .tag {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.95rem, 2.5vw + 1rem, 2.85rem);
+    font-weight: 800;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line);
+  }
+
+  @media (max-width: 640px) {
+    .problem-grid {
       grid-template-columns: 1fr;
     }
+  }
 
-    .about__media {
-      max-width: 320px;
-      margin-inline: auto;
+  .problem-card {
+    padding: 1.9rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .problem-card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .problem-grid .problem-card:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+
+  @media (max-width: 640px) {
+    .problem-card {
+      border-right: none !important;
     }
+    .problem-grid .problem-card:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .problem-card .ic {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--teal-deep);
+    background: var(--panel);
+    flex-shrink: 0;
+  }
+
+  .problem-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .problem-card p {
+    color: var(--ink-dim);
+    font-size: 0.92rem;
   }
 </style>

@@ -11,8 +11,8 @@ test("content module exports all required sections with correct shapes", async (
 
   assert.equal(c.hero.headline, "Software that fits. Teams that scale.");
 
-  assert.equal(c.services.items.length, 5);
-  assert.equal(c.whyCustom.items.length, 4);
+  assert.equal(c.services.items.length, 7);
+  assert.equal(c.problem.items.length, 4);
 
   assert.equal(c.staffAugBenefits.items.length, 7);
   assert.ok(c.staffAugBenefits.items.some((i) => i.title.includes("50%")));
