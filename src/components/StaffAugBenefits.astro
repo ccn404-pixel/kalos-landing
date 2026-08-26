@@ -3,9 +3,9 @@
 import { staffAugBenefits } from "../data/content";
 ---
 
-<div class="sa-benefits">
+<div class="sa-benefits" data-reveal-group>
   {staffAugBenefits.items.map((item) => (
-    <div class="sa-stat">
+    <div class="sa-stat" data-reveal>
       <span class="n">{item.n}</span>
       <span class="l">{item.l}</span>
       <span class="d">{item.d}</span>

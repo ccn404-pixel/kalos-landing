@@ -7,17 +7,17 @@ import portraitWoman from "../assets/photos/portrait-woman.png";
 
 <section id={problem.id} class="problem on-light" aria-labelledby="about-heading">
   <div class="container problem-layout">
-    <div class="problem-photo">
+    <div class="problem-photo" data-reveal="left">
       <Image src={portraitWoman} alt="" width={640} height={800} />
     </div>
     <div>
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <span class="tag status-off"><span class="dot"></span>{problem.tag}</span>
         <h2 id="about-heading">{problem.heading}</h2>
       </div>
-      <div class="problem-grid">
+      <div class="problem-grid" data-reveal-group>
         {problem.items.map((item) => (
-          <div class="problem-card">
+          <div class="problem-card" data-reveal>
             <div class="ic">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /><rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /><rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /><rect x="13" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.6" /></svg>
             </div>

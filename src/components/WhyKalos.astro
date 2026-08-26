@@ -8,16 +8,16 @@ import teamPhoto from "../assets/photos/team-collaboration.png";
 <section id="why-kalos" class="proof" aria-labelledby="why-kalos-heading">
   <Image src={teamPhoto} alt="" width={1600} height={900} />
   <div class="container proof-inner">
-    <span class="tag"><span class="dot"></span>Why Kalos</span>
-    <h2 id="why-kalos-heading">{whyKalos.heading}</h2>
-    <p class="proof-intro">{whyKalos.intro}</p>
+    <span class="tag" data-reveal><span class="dot"></span>Why Kalos</span>
+    <h2 id="why-kalos-heading" data-reveal>{whyKalos.heading}</h2>
+    <p class="proof-intro" data-reveal>{whyKalos.intro}</p>
     <div class="proof-grid">
-      <ol>
+      <ol data-reveal="left">
         {whyKalos.items.map((item, i) => (
           <li><span class="num">{String(i + 1).padStart(2, "0")}</span>{item}</li>
         ))}
       </ol>
-      <div>
+      <div data-reveal="right">
         <p class="statement">You&rsquo;re never just a client.<br />You&rsquo;re a partner.</p>
         <p class="proof-closing">{whyKalos.closing}</p>
       </div>

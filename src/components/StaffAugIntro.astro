@@ -5,18 +5,18 @@ import { staffAugIntro } from "../data/content";
 
 <section id={staffAugIntro.id} class="staffaug" aria-labelledby="staff-aug-heading">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <span class="tag"><span class="dot"></span>{staffAugIntro.eyebrow}</span>
       <h2 id="staff-aug-heading">{staffAugIntro.headline}</h2>
       <p class="staffaug__subhead">{staffAugIntro.subhead}</p>
     </div>
 
-    <div class="sa-panels">
-      <div class="sa-panel">
+    <div class="sa-panels" data-reveal-group>
+      <div class="sa-panel" data-reveal>
         <h3>{staffAugIntro.whatIsHeading}</h3>
         <p>{staffAugIntro.whatIsBody}</p>
       </div>
-      <div class="sa-panel sa-panel--accent">
+      <div class="sa-panel sa-panel--accent" data-reveal>
         <h3>{staffAugIntro.differenceHeading}</h3>
         <p>{staffAugIntro.differenceBody}</p>
       </div>
