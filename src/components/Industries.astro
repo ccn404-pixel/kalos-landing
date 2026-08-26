@@ -18,7 +18,12 @@ import { industries } from "../data/content";
   .industries {
     padding-block: var(--space-16);
     background: var(--lavender-50);
+    color: var(--light-ink);
     clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .industries h2 {
+    color: var(--light-ink);
   }
 
   .industries__pills {
@@ -31,8 +36,9 @@ import { industries } from "../data/content";
   }
 
   .industries__pills li {
-    background: transparent;
-    border: 1px solid var(--border-on-light);
+    background: var(--light-panel);
+    color: var(--light-ink);
+    border: 1px solid var(--light-line-strong);
     border-radius: 0;
     padding: var(--space-2) var(--space-4);
     font-family: var(--font-mono);
@@ -40,7 +46,7 @@ import { industries } from "../data/content";
     letter-spacing: 0.04em;
     text-transform: uppercase;
     font-weight: 600;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
   }
 
   .industries__pills li:hover {
