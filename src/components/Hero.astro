@@ -3,13 +3,15 @@
 import { Image } from "astro:assets";
 import { hero } from "../data/content";
 import hologramHands from "../assets/photos/hologram-hands.png";
+
+const heroHeadlineHtml = hero.headline.replace(". ", ".<br />");
 ---
 
 <section id="hero" class="hero" aria-labelledby="hero-heading">
   <div class="hero-grid">
     <div class="container hero-copy">
       <span class="tag"><span class="dot"></span>{hero.eyebrow}</span>
-      <h1 id="hero-heading">Software that fits.<br />Teams that scale.</h1>
+      <h1 id="hero-heading" set:html={heroHeadlineHtml} />
       <p class="sub">{hero.subhead}</p>
       <div class="hero-actions">
         <a href={hero.primaryCta.href} class="btn">{hero.primaryCta.label}</a>

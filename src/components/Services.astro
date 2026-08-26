@@ -9,6 +9,7 @@ import { ServiceBento } from "../react/services/ServiceBento";
     <div class="section-head">
       <span class="tag"><span class="dot"></span>{services.eyebrow}</span>
       <h2 id="services-heading">{services.heading}</h2>
+      <p class="services__intro">{services.intro}</p>
     </div>
     <ServiceBento client:visible items={services.items} />
   </div>
@@ -17,5 +18,12 @@ import { ServiceBento } from "../react/services/ServiceBento";
 <style>
   .services {
     padding-block: 6.5rem;
+  }
+
+  .services__intro {
+    margin-top: 1rem;
+    color: var(--light-ink-dim);
+    font-size: 1.02rem;
+    max-width: 60ch;
   }
 </style>

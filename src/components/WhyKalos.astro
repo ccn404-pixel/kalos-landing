@@ -3,6 +3,8 @@
 import { Image } from "astro:assets";
 import { whyKalos } from "../data/content";
 import teamPhoto from "../assets/photos/team-collaboration.png";
+
+const statementHtml = whyKalos.statement.replace(/'/g, "&rsquo;").replace(". ", ".<br />");
 ---
 
 <section id="why-kalos" class="proof" aria-labelledby="why-kalos-heading">
@@ -18,7 +20,7 @@ import teamPhoto from "../assets/photos/team-collaboration.png";
         ))}
       </ol>
       <div data-reveal="right">
-        <p class="statement">You&rsquo;re never just a client.<br />You&rsquo;re a partner.</p>
+        <p class="statement" set:html={statementHtml} />
         <p class="proof-closing">{whyKalos.closing}</p>
       </div>
     </div>
