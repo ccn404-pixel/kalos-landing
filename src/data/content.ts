@@ -71,14 +71,6 @@ export const services = {
       title: "Modernization & optimization",
       description: "Upgrade legacy systems without disrupting operations",
     },
-    {
-      title: "Database architecture & optimization",
-      description: "High-performance data systems designed for scale and reliability",
-    },
-    {
-      title: "Mobile app development",
-      description: "Native and cross-platform mobile solutions for iOS and Android",
-    },
   ],
 };
 
