@@ -3,6 +3,7 @@
 import { Image } from "astro:assets";
 import { hero } from "../data/content";
 import hologramHands from "../assets/photos/hologram-hands.png";
+import { HeroIsland } from "../react/hero/HeroIsland";
 
 const heroHeadlineHtml = hero.headline.replace(". ", ".<br />");
 ---
@@ -25,6 +26,7 @@ const heroHeadlineHtml = hero.headline.replace(". ", ".<br />");
     </div>
 
     <div class="hero-visual">
+      <HeroIsland client:load />
       <div class="photo-layer" aria-hidden="true">
         <Image src={hologramHands} alt="" width={640} height={581} />
       </div>
@@ -152,6 +154,7 @@ const heroHeadlineHtml = hero.headline.replace(". ", ".<br />");
     position: absolute;
     inset: 0;
     opacity: 0.22;
+    z-index: 1;
   }
 
   .hero-visual .photo-layer :global(img) {
@@ -284,5 +287,34 @@ const heroHeadlineHtml = hero.headline.replace(". ", ".<br />");
     border-radius: 50%;
     background: var(--teal);
     box-shadow: 0 0 6px var(--teal);
+  }
+</style>
+
+<style is:global>
+  /* HeroIsland renders client-side; Astro's scoped CSS can't reach into it,
+     so these rules stay global and are scoped visually by .hero-visual
+     (the nearest positioned ancestor), matching the pre-redesign hero. */
+  .hero-visual .hero-island {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-visual .hero-island canvas {
+    pointer-events: none;
+  }
+
+  .hero-visual .hero-chip {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal-dim);
+    background: rgba(16, 20, 27, 0.72);
+    border: 1px solid var(--dark-line-strong);
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    max-width: 68%;
   }
 </style>
